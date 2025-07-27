@@ -14,5 +14,6 @@ color_ramp = SubResource("Gradient_bcohs")
 noise = SubResource("FastNoiseLite_1rp4a")
 
 [node name="StatBar" instance=ExtResource("1_bcohs")]
+value = 52.0
 texture_under = SubResource("NoiseTexture2D_qsm74")
 stat = 1
