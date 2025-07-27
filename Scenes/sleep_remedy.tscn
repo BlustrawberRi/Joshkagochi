@@ -1,0 +1,9 @@
+[gd_scene load_steps=2 format=3 uid="uid://c0m7qnbcww5rm"]
+
+[ext_resource type="PackedScene" uid="uid://dij2q817sy2ly" path="res://Scenes/item_Base.tscn" id="1_wbp54"]
+
+[node name="Item" instance=ExtResource("1_wbp54")]
+stat = 1
+
+[node name="Button" parent="." index="0"]
+modulate = Color(0.912359, 0.760466, 0, 1)
