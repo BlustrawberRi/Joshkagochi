@@ -10,7 +10,7 @@ height = 32
 noise = SubResource("FastNoiseLite_rp84f")
 
 [sub_resource type="Gradient" id="Gradient_rp84f"]
-colors = PackedColorArray(0.0352042, 0.244125, 0.177553, 1, 0.512893, 0.984192, 0.702421, 1)
+colors = PackedColorArray(0.0294896, 0.173537, 0.472971, 1, 0.426761, 0.969966, 0.94518, 1)
 
 [sub_resource type="FastNoiseLite" id="FastNoiseLite_mg8eb"]
 noise_type = 3
