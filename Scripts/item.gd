@@ -7,6 +7,6 @@ extends Control
 
 
 func _on_button_pressed():
-	StatsManager.update_stat(stat, difference)#StatsManager.stats_dict.get(stat) +# difference)
+	StatsManager.update_stat(stat, difference)#StatsManager.stats_dict.get(stat) + difference)
 	
 	pass # Replace with function body.
