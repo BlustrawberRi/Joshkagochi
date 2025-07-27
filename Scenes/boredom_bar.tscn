@@ -1,0 +1,6 @@
+[gd_scene load_steps=2 format=3 uid="uid://cemijs48o438d"]
+
+[ext_resource type="PackedScene" uid="uid://0uln8e6lgi6m" path="res://Scenes/stat_bar_base.tscn" id="1_w4kqr"]
+
+[node name="StatBar" instance=ExtResource("1_w4kqr")]
+stat = 2

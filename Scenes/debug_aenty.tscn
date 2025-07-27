@@ -1,8 +1,11 @@
-[gd_scene load_steps=4 format=3 uid="uid://go8tue6ampuh"]
+[gd_scene load_steps=7 format=3 uid="uid://go8tue6ampuh"]
 
 [ext_resource type="PackedScene" uid="uid://dkflewpumsmbr" path="res://Scenes/boredom_remedy.tscn" id="1_jq27j"]
 [ext_resource type="PackedScene" uid="uid://bn4y6kx1uy3of" path="res://Scenes/hunger_remedy.tscn" id="2_ddsb6"]
 [ext_resource type="PackedScene" uid="uid://c0m7qnbcww5rm" path="res://Scenes/sleep_remedy.tscn" id="3_rj2hk"]
+[ext_resource type="PackedScene" uid="uid://cyusm7u8wmwh7" path="res://Scenes/sleep_bar.tscn" id="4_q510y"]
+[ext_resource type="PackedScene" uid="uid://cemijs48o438d" path="res://Scenes/boredom_bar.tscn" id="5_ethus"]
+[ext_resource type="PackedScene" uid="uid://by0vukekvq4n7" path="res://Scenes/hunger_bar.tscn" id="6_0ijgr"]
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -29,4 +32,19 @@ layout_mode = 2
 layout_mode = 2
 
 [node name="Item3" parent="VBoxContainer" instance=ExtResource("3_rj2hk")]
+layout_mode = 2
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+theme_override_constants/separation = 115
+
+[node name="StatBar" parent="VBoxContainer2" instance=ExtResource("4_q510y")]
+layout_mode = 2
+
+[node name="StatBar2" parent="VBoxContainer2" instance=ExtResource("5_ethus")]
+layout_mode = 2
+
+[node name="StatBar3" parent="VBoxContainer2" instance=ExtResource("6_0ijgr")]
 layout_mode = 2

@@ -1,0 +1,18 @@
+[gd_scene load_steps=5 format=3 uid="uid://cyusm7u8wmwh7"]
+
+[ext_resource type="PackedScene" uid="uid://0uln8e6lgi6m" path="res://Scenes/stat_bar_base.tscn" id="1_bcohs"]
+
+[sub_resource type="Gradient" id="Gradient_bcohs"]
+colors = PackedColorArray(0.281451, 0.0186808, 0.625513, 1, 0.059126, 0.0591259, 0.0591259, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_1rp4a"]
+noise_type = 2
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_qsm74"]
+height = 32
+color_ramp = SubResource("Gradient_bcohs")
+noise = SubResource("FastNoiseLite_1rp4a")
+
+[node name="StatBar" instance=ExtResource("1_bcohs")]
+texture_under = SubResource("NoiseTexture2D_qsm74")
+stat = 1
