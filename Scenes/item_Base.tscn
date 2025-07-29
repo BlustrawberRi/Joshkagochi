@@ -1,7 +1,10 @@
-[gd_scene load_steps=3 format=3 uid="uid://dij2q817sy2ly"]
+[gd_scene load_steps=4 format=3 uid="uid://dij2q817sy2ly"]
 
 [ext_resource type="Texture2D" uid="uid://c4d06be7y6o6a" path="res://icon.svg" id="1_cig5q"]
 [ext_resource type="Script" uid="uid://be0g34utx2apa" path="res://Scripts/item.gd" id="1_ixk3b"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ixk3b"]
+size = Vector2(107, 104)
 
 [node name="Item" type="Control"]
 layout_mode = 3
@@ -17,6 +20,12 @@ layout_mode = 0
 offset_right = 42.0
 offset_bottom = 39.0
 texture_normal = ExtResource("1_cig5q")
+
+[node name="StaticBody2D" type="Area2D" parent="."]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="StaticBody2D"]
+position = Vector2(63.5, 62)
+shape = SubResource("RectangleShape2D_ixk3b")
 
 [connection signal="button_down" from="Button" to="." method="_on_button_down"]
 [connection signal="button_up" from="Button" to="." method="_on_button_up"]

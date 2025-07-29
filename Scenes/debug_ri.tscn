@@ -1,10 +1,13 @@
-[gd_scene load_steps=10 format=3 uid="uid://cewl6bledbexq"]
+[gd_scene load_steps=11 format=3 uid="uid://cewl6bledbexq"]
 
 [ext_resource type="PackedScene" uid="uid://dkflewpumsmbr" path="res://Scenes/boredom_remedy.tscn" id="1_dvldc"]
 [ext_resource type="Texture2D" uid="uid://c4d06be7y6o6a" path="res://icon.svg" id="1_k2807"]
 [ext_resource type="Script" uid="uid://btdaqrlwkhsmk" path="res://Scripts/worm_fsm.gd" id="2_b1ldt"]
 [ext_resource type="PackedScene" uid="uid://bn4y6kx1uy3of" path="res://Scenes/hunger_remedy.tscn" id="2_pl56k"]
 [ext_resource type="PackedScene" uid="uid://c0m7qnbcww5rm" path="res://Scenes/sleep_remedy.tscn" id="3_6xvl5"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_dvldc"]
+size = Vector2(98.7109, 97.4206)
 
 [sub_resource type="Animation" id="Animation_b1ldt"]
 length = 0.001
@@ -107,11 +110,25 @@ layout_mode = 2
 [node name="Sleep" parent="Items" instance=ExtResource("3_6xvl5")]
 layout_mode = 2
 
-[node name="Worm" type="Sprite2D" parent="."]
+[node name="Worm" type="Area2D" parent="."]
 position = Vector2(392, 234)
 scale = Vector2(1.54998, 1.54998)
-texture = ExtResource("1_k2807")
 script = ExtResource("2_b1ldt")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Worm"]
+position = Vector2(-0.322586, 0.322571)
+scale = Vector2(1, 1)
+shape = SubResource("RectangleShape2D_dvldc")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="Worm"]
+reset_on_save = false
+root_node = NodePath("../Sprite2D")
+libraries = {
+&"": SubResource("AnimationLibrary_qqy2t")
+}
+
+[node name="Sprite2D" type="Sprite2D" parent="Worm"]
+texture = ExtResource("1_k2807")
 
 [node name="Face" type="Label" parent="Worm"]
 offset_left = 37.0
@@ -124,8 +141,5 @@ text = ":)"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="AnimationPlayer" type="AnimationPlayer" parent="Worm"]
-reset_on_save = false
-libraries = {
-&"": SubResource("AnimationLibrary_qqy2t")
-}
+[connection signal="area_entered" from="Worm" to="Worm" method="_on_area_entered"]
+[connection signal="area_shape_entered" from="Worm" to="Worm" method="_on_area_shape_entered"]

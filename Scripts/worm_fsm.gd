@@ -1,12 +1,11 @@
-@tool
-extends Sprite2D
+extends Area2D
 
 enum Mood{good,meh,bad}
 enum Shape{chill, active}
 
 @export var mood : Mood
 
-@export var shape:Shape
+@export var shape : Shape
 
 func _ready():
 	calculate_mood()
@@ -41,3 +40,10 @@ func update_face():
 	
 func _on_stat_changed(_stat, _value):
 	calculate_mood()
+
+func _on_area_entered(area):
+	var item = area.get_parent()
+	if item is not Item: return
+
+	print(StatsManager.stats.find_key( item.stat))
+	StatsManager.update_stat(item.stat, item.difference)
