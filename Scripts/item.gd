@@ -8,15 +8,15 @@ class_name Item
 var _is_pressed : bool
 var _mouse_pos_offset : Vector2
 
+var origin_pos: Vector2
+
+func _ready():
+	print(self.position)
+	origin_pos = self.position
+
 func _process(_delta):
 	if _is_pressed:
 		_drag()
-
-# deprecated, use worm_fsm._on_area_entered instead
-func _on_button_pressed():
-	StatsManager.update_stat(stat, difference)#StatsManager.stats_dict.get(stat) + difference)
-	# i am unsure if you meant to write this but it didn't make much sense to me to already calculate the value here, when the function also does that
-
 
 func _on_button_down():
 	_is_pressed = true
@@ -24,6 +24,7 @@ func _on_button_down():
 
 func _on_button_up():
 	_is_pressed = false
+	self.position = origin_pos
 
 func _drag():
 	var new_position = get_viewport().get_mouse_position() + _mouse_pos_offset

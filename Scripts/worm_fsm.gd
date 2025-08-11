@@ -6,12 +6,17 @@ enum Shape{chill, active}
 @export var mood : Mood
 
 @export var shape : Shape
+@onready var face = $CollisionShape2D/Face 
+
+var is_idling: bool
+var tween: Tween
 
 func _ready():
 	calculate_mood()
 	StatsManager.stat_change.connect(_on_stat_changed)
 
 func calculate_mood():
+	var previous_mood = mood
 	var total_stimulation = 0
 	for stat in StatsManager.stats_dict:
 		total_stimulation += StatsManager.get_stat_value(stat)
@@ -25,11 +30,14 @@ func calculate_mood():
 		mood = Mood.meh
 	else:
 		mood = Mood.good
-		
-	update_face()
+	
+	if(previous_mood != mood):
+		update_face()
+		if(mood != Mood.bad):
+			$AnimationPlayer.play("chilling")
+			idle()
 
 func update_face():
-	var face : Label = get_node("Face")
 	match mood:
 		Mood.good:
 			face.text = ":)"
@@ -47,3 +55,22 @@ func _on_area_entered(area):
 
 	print(StatsManager.stats.find_key( item.stat))
 	StatsManager.update_stat(item.stat, item.difference)
+
+func idle(): 
+	is_idling = true
+	
+	#prevents multiple tweens firing when going from 'meh' to 'good' or vice versa
+	if tween:
+		tween.kill()
+	
+	var target_x = position.x + randi_range(-100, 100) * 2
+	target_x = clampi(target_x, 128, 900)
+	var target_y = position.y + randi_range(-50, 50) * 2
+	target_y = clampi(target_y, 235, 545)
+	
+	var target_destination = Vector2(target_x, target_y)
+	tween = get_tree().create_tween()
+	tween.tween_property(self, "position", target_destination, randf_range(0.8, 2.2)).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
+	await tween.tween_interval(randf_range(1.2, 2.3)).finished
+	tween.kill()
+	if (is_idling): idle()

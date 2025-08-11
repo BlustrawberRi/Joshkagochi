@@ -11,7 +11,7 @@ var stats_dict := {
 signal stat_change(stat, value)
 
 func update_stat(stat: stats, change: float):
-	var new_value = stats_dict.get(stat) + change
+	var new_value = max(0, stats_dict.get(stat) + change)
 	stats_dict.set(stat, new_value)
 	stat_change.emit(stat, new_value)
 	print("Stat: ", stat, " Value: ", stats_dict.get(stat))
