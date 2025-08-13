@@ -1,6 +1,6 @@
 [gd_scene load_steps=8 format=3 uid="uid://cyusm7u8wmwh7"]
 
-[ext_resource type="PackedScene" uid="uid://0uln8e6lgi6m" path="res://Scenes/stat_bar_base.tscn" id="1_bcohs"]
+[ext_resource type="PackedScene" uid="uid://0uln8e6lgi6m" path="res://Scenes/stat_bar_base.tscn" id="1_v47jw"]
 
 [sub_resource type="Gradient" id="Gradient_bcohs"]
 colors = PackedColorArray(0.281451, 0.0186808, 0.625513, 1, 0.059126, 0.0591259, 0.0591259, 1)
@@ -24,8 +24,8 @@ height = 32
 color_ramp = SubResource("Gradient_1rp4a")
 noise = SubResource("FastNoiseLite_qsm74")
 
-[node name="StatBar" instance=ExtResource("1_bcohs")]
+[node name="StatBar" instance=ExtResource("1_v47jw")]
 value = 52.0
 texture_under = SubResource("NoiseTexture2D_qsm74")
 texture_progress = SubResource("NoiseTexture2D_c661h")
-stat = 1
+stat = 2

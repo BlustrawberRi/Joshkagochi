@@ -55,6 +55,11 @@ func _on_area_entered(area):
 
 	print(StatsManager.stats.find_key( item.stat))
 	StatsManager.update_stat(item.stat, item.difference)
+	# todo: start remedy periodical update
+
+
+# func _on_area_exited(area)
+#	todo: stop remedies
 
 func idle(): 
 	is_idling = true

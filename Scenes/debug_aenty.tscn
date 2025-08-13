@@ -1,12 +1,25 @@
-[gd_scene load_steps=8 format=3 uid="uid://go8tue6ampuh"]
+[gd_scene load_steps=13 format=3 uid="uid://go8tue6ampuh"]
 
 [ext_resource type="PackedScene" uid="uid://dkflewpumsmbr" path="res://Scenes/boredom_remedy.tscn" id="1_jq27j"]
-[ext_resource type="PackedScene" uid="uid://bn4y6kx1uy3of" path="res://Scenes/hunger_remedy.tscn" id="2_ddsb6"]
-[ext_resource type="PackedScene" uid="uid://c0m7qnbcww5rm" path="res://Scenes/sleep_remedy.tscn" id="3_rj2hk"]
-[ext_resource type="PackedScene" uid="uid://cyusm7u8wmwh7" path="res://Scenes/sleep_bar.tscn" id="4_q510y"]
+[ext_resource type="PackedScene" uid="uid://bn4y6kx1uy3of" path="res://Scenes/thirst_remedy.tscn" id="2_ddsb6"]
+[ext_resource type="PackedScene" uid="uid://c0m7qnbcww5rm" path="res://Scenes/anger_remedy.tscn" id="3_rj2hk"]
+[ext_resource type="PackedScene" uid="uid://de5dvjwm66mpk" path="res://Scenes/money_bar.tscn" id="4_0ijgr"]
+[ext_resource type="PackedScene" uid="uid://cyusm7u8wmwh7" path="res://Scenes/anger_bar.tscn" id="4_q510y"]
 [ext_resource type="PackedScene" uid="uid://cemijs48o438d" path="res://Scenes/boredom_bar.tscn" id="5_ethus"]
-[ext_resource type="PackedScene" uid="uid://by0vukekvq4n7" path="res://Scenes/hunger_bar.tscn" id="6_0ijgr"]
+[ext_resource type="PackedScene" uid="uid://by0vukekvq4n7" path="res://Scenes/thirst_bar.tscn" id="6_0ijgr"]
+[ext_resource type="PackedScene" uid="uid://f0e7mj35v1p4" path="res://Scenes/money_remedy.tscn" id="6_rlaxs"]
 [ext_resource type="PackedScene" uid="uid://owkaguou2jyq" path="res://Scenes/worm.tscn" id="7_ethus"]
+
+[sub_resource type="Gradient" id="Gradient_1idgn"]
+colors = PackedColorArray(0.370341, 0.0856195, 0.125144, 1, 0.587055, 0.969628, 0.70887, 1)
+
+[sub_resource type="FastNoiseLite" id="FastNoiseLite_i54om"]
+noise_type = 3
+
+[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_v5sty"]
+height = 32
+color_ramp = SubResource("Gradient_1idgn")
+noise = SubResource("FastNoiseLite_i54om")
 
 [node name="Control" type="Control"]
 layout_mode = 3
@@ -35,14 +48,29 @@ theme_override_constants/separation = 25
 [node name="Boredom" parent="VBoxContainer2" instance=ExtResource("5_ethus")]
 layout_mode = 2
 
-[node name="Hunger" parent="VBoxContainer2" instance=ExtResource("6_0ijgr")]
+[node name="Thirst" parent="VBoxContainer2" instance=ExtResource("6_0ijgr")]
+layout_mode = 2
+texture_over = null
+texture_progress = SubResource("NoiseTexture2D_v5sty")
+
+[node name="Anger" parent="VBoxContainer2" instance=ExtResource("4_q510y")]
 layout_mode = 2
 
-[node name="Sleep" parent="VBoxContainer2" instance=ExtResource("4_q510y")]
+[node name="Money" parent="VBoxContainer2" instance=ExtResource("4_0ijgr")]
 layout_mode = 2
 
 [node name="Worm" parent="." instance=ExtResource("7_ethus")]
 position = Vector2(540, 390)
+
+[node name="Item" parent="." instance=ExtResource("6_rlaxs")]
+layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 1024.0
+offset_top = 496.0
+offset_right = 1536.0
+offset_bottom = 496.0
 
 [node name="Boredom" parent="." instance=ExtResource("1_jq27j")]
 layout_mode = 2

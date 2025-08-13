@@ -15,4 +15,3 @@ noise = SubResource("FastNoiseLite_n4sqb")
 
 [node name="StatBar" instance=ExtResource("1_w4kqr")]
 texture_progress = SubResource("NoiseTexture2D_wce7m")
-stat = 2

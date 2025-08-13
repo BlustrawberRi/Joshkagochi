@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://cewl6bledbexq"]
 
 [ext_resource type="PackedScene" uid="uid://dkflewpumsmbr" path="res://Scenes/boredom_remedy.tscn" id="1_dvldc"]
-[ext_resource type="PackedScene" uid="uid://bn4y6kx1uy3of" path="res://Scenes/hunger_remedy.tscn" id="2_pl56k"]
-[ext_resource type="PackedScene" uid="uid://c0m7qnbcww5rm" path="res://Scenes/sleep_remedy.tscn" id="3_6xvl5"]
+[ext_resource type="PackedScene" uid="uid://bn4y6kx1uy3of" path="res://Scenes/thirst_remedy.tscn" id="2_pl56k"]
+[ext_resource type="PackedScene" uid="uid://c0m7qnbcww5rm" path="res://Scenes/anger_remedy.tscn" id="3_6xvl5"]
 [ext_resource type="PackedScene" uid="uid://owkaguou2jyq" path="res://Scenes/worm.tscn" id="4_qqy2t"]
 
 [node name="DebugRi" type="Node2D"]
@@ -21,10 +21,10 @@ theme_override_constants/separation = 163
 [node name="Boredom" parent="Items" instance=ExtResource("1_dvldc")]
 layout_mode = 2
 
-[node name="Hunger" parent="Items" instance=ExtResource("2_pl56k")]
+[node name="Thirst" parent="Items" instance=ExtResource("2_pl56k")]
 layout_mode = 2
 
-[node name="Sleep" parent="Items" instance=ExtResource("3_6xvl5")]
+[node name="Anger" parent="Items" instance=ExtResource("3_6xvl5")]
 layout_mode = 2
 
 [node name="Worm" parent="." instance=ExtResource("4_qqy2t")]

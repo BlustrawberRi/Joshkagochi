@@ -11,6 +11,7 @@ var _mouse_pos_offset : Vector2
 var origin_pos: Vector2
 
 func _ready():
+	await get_tree().process_frame
 	print(self.position)
 	origin_pos = self.position
 

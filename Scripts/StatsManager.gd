@@ -1,11 +1,13 @@
 extends Node
 
-enum stats {hungry, sleepy, boredom}
+enum stats {boredom, thirst, anger, money, crime}
 
 var stats_dict := {
-	stats.hungry : 100.0,
-	stats.sleepy : 90.0,
-	stats.boredom : 50.0
+	stats.boredom : 50.0,
+	stats.thirst : 20.0,
+	stats.anger : 0.0,
+	stats.money : 20.0,
+	stats.crime : 0.0,
 }
 
 signal stat_change(stat, value)
