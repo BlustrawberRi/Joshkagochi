@@ -1,32 +1,63 @@
-[gd_scene load_steps=8 format=3 uid="uid://owkaguou2jyq"]
+[gd_scene load_steps=14 format=3 uid="uid://owkaguou2jyq"]
 
 [ext_resource type="Script" uid="uid://btdaqrlwkhsmk" path="res://Scripts/worm_fsm.gd" id="1_l5dqu"]
-[ext_resource type="Texture2D" uid="uid://c4d06be7y6o6a" path="res://icon.svg" id="2_n80vc"]
+[ext_resource type="Texture2D" uid="uid://qybwy3quron" path="res://Images/joshka worm base.png" id="2_l5dqu"]
+[ext_resource type="Texture2D" uid="uid://bn6s0hayb38ed" path="res://Images/joshka face content.png" id="3_b7lw1"]
+[ext_resource type="Texture2D" uid="uid://cwpm40ta682s4" path="res://Images/joshka face basic.png" id="4_jsk0y"]
+[ext_resource type="Texture2D" uid="uid://cbbr4cmd1jfqd" path="res://Images/joshka face meh.png" id="5_211br"]
+[ext_resource type="Texture2D" uid="uid://cyi8vyq18p6wh" path="res://Images/joshka face bad.png" id="5_cgdv7"]
+[ext_resource type="Texture2D" uid="uid://bdgoqav34nr78" path="res://Images/joshka face eat.png" id="6_wo384"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_dvldc"]
 size = Vector2(98.7109, 97.4206)
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_211br"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_cgdv7")
+}],
+"loop": true,
+"name": &"bad",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("3_b7lw1")
+}],
+"loop": true,
+"name": &"content",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("5_211br")
+}],
+"loop": true,
+"name": &"default",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("6_wo384")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_jsk0y")
+}],
+"loop": true,
+"name": &"eating",
+"speed": 5.0
+}]
 
 [sub_resource type="Animation" id="Animation_b1ldt"]
 length = 0.001
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
+tracks/0/path = NodePath("../..:position")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(1, 1)]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath(".:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
 "times": PackedFloat32Array(0),
 "transitions": PackedFloat32Array(1),
 "update": 0,
@@ -40,7 +71,7 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
+tracks/0/path = NodePath("../..:scale")
 tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
@@ -52,7 +83,7 @@ tracks/0/keys = {
 tracks/1/type = "value"
 tracks/1/imported = false
 tracks/1/enabled = true
-tracks/1/path = NodePath(".:position")
+tracks/1/path = NodePath("../..:position")
 tracks/1/interp = 1
 tracks/1/loop_wrap = true
 tracks/1/keys = {
@@ -68,8 +99,8 @@ loop_mode = 1
 tracks/0/type = "value"
 tracks/0/imported = false
 tracks/0/enabled = true
-tracks/0/path = NodePath(".:scale")
-tracks/0/interp = 2
+tracks/0/path = NodePath("../..:scale")
+tracks/0/interp = 1
 tracks/0/loop_wrap = true
 tracks/0/keys = {
 "times": PackedFloat32Array(0, 0.5, 1),
@@ -86,30 +117,22 @@ _data = {
 }
 
 [node name="Worm" type="Area2D"]
-scale = Vector2(1.54998, 1.54998)
 script = ExtResource("1_l5dqu")
 shape = 1
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_dvldc")
 
-[node name="Sprite2D" type="Sprite2D" parent="CollisionShape2D"]
-texture = ExtResource("2_n80vc")
+[node name="Body" type="Sprite2D" parent="CollisionShape2D"]
+texture = ExtResource("2_l5dqu")
 
-[node name="Face" type="Label" parent="CollisionShape2D"]
-offset_left = 37.3226
-offset_top = -40.3226
-offset_right = 77.3226
-offset_bottom = 30.6774
-rotation = 1.5708
-theme_override_font_sizes/font_size = 30
-text = ":)"
-horizontal_alignment = 1
-vertical_alignment = 1
+[node name="Face" type="AnimatedSprite2D" parent="CollisionShape2D"]
+sprite_frames = SubResource("SpriteFrames_211br")
+animation = &"eating"
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 reset_on_save = false
-root_node = NodePath("../CollisionShape2D/Sprite2D")
+root_node = NodePath("../CollisionShape2D/Body")
 libraries = {
 &"": SubResource("AnimationLibrary_qqy2t")
 }

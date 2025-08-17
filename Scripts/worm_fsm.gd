@@ -6,12 +6,13 @@ enum Shape{chill, active}
 @export var mood : Mood
 
 @export var shape : Shape
-@onready var face = $CollisionShape2D/Face 
+@onready var face : AnimatedSprite2D = $CollisionShape2D/Face 
 
 var is_idling: bool
 var tween: Tween
 
 func _ready():
+	update_face()
 	calculate_mood()
 	StatsManager.stat_change.connect(_on_stat_changed)
 
@@ -33,18 +34,19 @@ func calculate_mood():
 	
 	if(previous_mood != mood):
 		update_face()
-		if(mood != Mood.bad):
-			$AnimationPlayer.play("chilling")
-			idle()
+
+	if(mood != Mood.bad):
+		$AnimationPlayer.play("chilling")
+		idle()
 
 func update_face():
 	match mood:
 		Mood.good:
-			face.text = ":)"
+			face.play("content")
 		Mood.meh:
-			face.text = "<:|"
+			face.play("default")
 		Mood.bad:
-			face.text = ">:("
+			face.play("bad")
 	
 func _on_stat_changed(_stat, _value):
 	calculate_mood()

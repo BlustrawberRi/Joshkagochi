@@ -18,6 +18,11 @@ config/icon="res://icon.svg"
 
 StatsManager="*res://Scripts/StatsManager.gd"
 
+[display]
+
+window/size/viewport_width=1600
+window/size/viewport_height=900
+
 [dotnet]
 
 project/assembly_name="Joshkagochi"

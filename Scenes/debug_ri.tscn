@@ -1,13 +1,20 @@
-[gd_scene load_steps=5 format=3 uid="uid://cewl6bledbexq"]
+[gd_scene load_steps=7 format=3 uid="uid://cewl6bledbexq"]
 
 [ext_resource type="PackedScene" uid="uid://dkflewpumsmbr" path="res://Scenes/boredom_remedy.tscn" id="1_dvldc"]
+[ext_resource type="Texture2D" uid="uid://h3hrdt4wybct" path="res://Images/tamagotchi_bg.png" id="1_pl56k"]
+[ext_resource type="PackedScene" uid="uid://f0e7mj35v1p4" path="res://Scenes/money_remedy.tscn" id="2_6xvl5"]
 [ext_resource type="PackedScene" uid="uid://bn4y6kx1uy3of" path="res://Scenes/thirst_remedy.tscn" id="2_pl56k"]
 [ext_resource type="PackedScene" uid="uid://c0m7qnbcww5rm" path="res://Scenes/anger_remedy.tscn" id="3_6xvl5"]
 [ext_resource type="PackedScene" uid="uid://owkaguou2jyq" path="res://Scenes/worm.tscn" id="4_qqy2t"]
 
 [node name="DebugRi" type="Node2D"]
 
-[node name="Items" type="VBoxContainer" parent="."]
+[node name="TamagotchiBg" type="Sprite2D" parent="."]
+position = Vector2(800, 450)
+texture = ExtResource("1_pl56k")
+
+[node name="Items" type="Control" parent="."]
+layout_mode = 3
 anchors_preset = 1
 anchor_left = 1.0
 anchor_right = 1.0
@@ -16,17 +23,43 @@ offset_top = 77.0
 offset_right = 1091.0
 offset_bottom = 403.0
 grow_horizontal = 0
-theme_override_constants/separation = 163
+
+[node name="Item" parent="Items" instance=ExtResource("2_6xvl5")]
+layout_mode = 1
+offset_left = 380.0
+offset_top = 520.0
+offset_right = 380.0
+offset_bottom = 520.0
 
 [node name="Boredom" parent="Items" instance=ExtResource("1_dvldc")]
 layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 452.0
+offset_top = 678.0
+offset_right = 580.0
+offset_bottom = 678.0
 
 [node name="Thirst" parent="Items" instance=ExtResource("2_pl56k")]
 layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 343.0
+offset_top = 155.0
+offset_right = 471.0
+offset_bottom = 155.0
 
 [node name="Anger" parent="Items" instance=ExtResource("3_6xvl5")]
 layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 366.0
+offset_top = 346.0
+offset_right = 494.0
+offset_bottom = 346.0
 
 [node name="Worm" parent="." instance=ExtResource("4_qqy2t")]
-position = Vector2(392, 234)
-scale = Vector2(1.5, 1.5)
+position = Vector2(648, 389)
