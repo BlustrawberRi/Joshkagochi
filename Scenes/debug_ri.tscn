@@ -1,17 +1,41 @@
-[gd_scene load_steps=7 format=3 uid="uid://cewl6bledbexq"]
+[gd_scene load_steps=11 format=3 uid="uid://cewl6bledbexq"]
 
 [ext_resource type="PackedScene" uid="uid://dkflewpumsmbr" path="res://Scenes/boredom_remedy.tscn" id="1_dvldc"]
 [ext_resource type="Texture2D" uid="uid://h3hrdt4wybct" path="res://Images/tamagotchi_bg.png" id="1_pl56k"]
 [ext_resource type="PackedScene" uid="uid://f0e7mj35v1p4" path="res://Scenes/money_remedy.tscn" id="2_6xvl5"]
+[ext_resource type="PackedScene" uid="uid://cemijs48o438d" path="res://Scenes/boredom_bar.tscn" id="2_bn4a2"]
 [ext_resource type="PackedScene" uid="uid://bn4y6kx1uy3of" path="res://Scenes/thirst_remedy.tscn" id="2_pl56k"]
+[ext_resource type="PackedScene" uid="uid://by0vukekvq4n7" path="res://Scenes/thirst_bar.tscn" id="3_1sc7q"]
 [ext_resource type="PackedScene" uid="uid://c0m7qnbcww5rm" path="res://Scenes/anger_remedy.tscn" id="3_6xvl5"]
+[ext_resource type="PackedScene" uid="uid://cyusm7u8wmwh7" path="res://Scenes/anger_bar.tscn" id="4_lc5mr"]
 [ext_resource type="PackedScene" uid="uid://owkaguou2jyq" path="res://Scenes/worm.tscn" id="4_qqy2t"]
+[ext_resource type="PackedScene" uid="uid://de5dvjwm66mpk" path="res://Scenes/money_bar.tscn" id="5_spq87"]
 
 [node name="DebugRi" type="Node2D"]
 
 [node name="TamagotchiBg" type="Sprite2D" parent="."]
 position = Vector2(800, 450)
 texture = ExtResource("1_pl56k")
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="."]
+offset_left = 44.0
+offset_top = 294.0
+offset_right = 301.0
+offset_bottom = 609.0
+theme_override_constants/separation = 25
+
+[node name="Boredom" parent="VBoxContainer2" instance=ExtResource("2_bn4a2")]
+layout_mode = 2
+tint_progress = Color(0.67, 0.714, 1, 1)
+
+[node name="Thirst" parent="VBoxContainer2" instance=ExtResource("3_1sc7q")]
+layout_mode = 2
+
+[node name="Anger" parent="VBoxContainer2" instance=ExtResource("4_lc5mr")]
+layout_mode = 2
+
+[node name="Money" parent="VBoxContainer2" instance=ExtResource("5_spq87")]
+layout_mode = 2
 
 [node name="Items" type="Control" parent="."]
 layout_mode = 3

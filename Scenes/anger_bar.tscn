@@ -1,31 +1,12 @@
-[gd_scene load_steps=8 format=3 uid="uid://cyusm7u8wmwh7"]
+[gd_scene load_steps=2 format=3 uid="uid://cyusm7u8wmwh7"]
 
 [ext_resource type="PackedScene" uid="uid://0uln8e6lgi6m" path="res://Scenes/stat_bar_base.tscn" id="1_v47jw"]
 
-[sub_resource type="Gradient" id="Gradient_bcohs"]
-colors = PackedColorArray(0.281451, 0.0186808, 0.625513, 1, 0.059126, 0.0591259, 0.0591259, 1)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_1rp4a"]
-noise_type = 2
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_qsm74"]
-height = 32
-color_ramp = SubResource("Gradient_bcohs")
-noise = SubResource("FastNoiseLite_1rp4a")
-
-[sub_resource type="Gradient" id="Gradient_1rp4a"]
-colors = PackedColorArray(0.0447084, 0.186578, 0.437941, 1, 0.42726, 0.975825, 0.90049, 1)
-
-[sub_resource type="FastNoiseLite" id="FastNoiseLite_qsm74"]
-noise_type = 3
-
-[sub_resource type="NoiseTexture2D" id="NoiseTexture2D_c661h"]
-height = 32
-color_ramp = SubResource("Gradient_1rp4a")
-noise = SubResource("FastNoiseLite_qsm74")
-
 [node name="StatBar" instance=ExtResource("1_v47jw")]
 value = 52.0
-texture_under = SubResource("NoiseTexture2D_qsm74")
-texture_progress = SubResource("NoiseTexture2D_c661h")
+tint_progress = Color(0.91, 0.643067, 0.546, 1)
 stat = 2
+
+[node name="RichTextLabel" parent="." index="0"]
+bbcode_enabled = true
+text = "[shake]Anger[/shake]"

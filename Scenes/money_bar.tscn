@@ -3,4 +3,8 @@
 [ext_resource type="PackedScene" uid="uid://0uln8e6lgi6m" path="res://Scenes/stat_bar_base.tscn" id="1_7hrn5"]
 
 [node name="TextureProgressBar" instance=ExtResource("1_7hrn5")]
+tint_progress = Color(0.783, 1, 0.58, 1)
 stat = 3
+
+[node name="RichTextLabel" parent="." index="0"]
+text = "Money"
