@@ -26,7 +26,6 @@ theme_override_constants/separation = 25
 
 [node name="Boredom" parent="VBoxContainer2" instance=ExtResource("2_bn4a2")]
 layout_mode = 2
-tint_progress = Color(0.67, 0.714, 1, 1)
 
 [node name="Thirst" parent="VBoxContainer2" instance=ExtResource("3_1sc7q")]
 layout_mode = 2
@@ -86,4 +85,4 @@ offset_right = 494.0
 offset_bottom = 346.0
 
 [node name="Worm" parent="." instance=ExtResource("4_qqy2t")]
-position = Vector2(648, 389)
+position = Vector2(777, 450)

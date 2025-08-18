@@ -36,7 +36,6 @@ theme_override_constants/separation = 25
 
 [node name="Boredom" parent="VBoxContainer2" instance=ExtResource("5_ethus")]
 layout_mode = 2
-tint_progress = Color(0.67, 0.714, 1, 1)
 
 [node name="Thirst" parent="VBoxContainer2" instance=ExtResource("6_0ijgr")]
 layout_mode = 2
