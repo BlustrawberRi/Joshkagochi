@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://cewl6bledbexq"]
+[gd_scene load_steps=12 format=3 uid="uid://cewl6bledbexq"]
 
 [ext_resource type="PackedScene" uid="uid://dkflewpumsmbr" path="res://Scenes/boredom_remedy.tscn" id="1_dvldc"]
 [ext_resource type="Texture2D" uid="uid://h3hrdt4wybct" path="res://Images/tamagotchi_bg.png" id="1_pl56k"]
@@ -10,6 +10,7 @@
 [ext_resource type="PackedScene" uid="uid://cyusm7u8wmwh7" path="res://Scenes/anger_bar.tscn" id="4_lc5mr"]
 [ext_resource type="PackedScene" uid="uid://owkaguou2jyq" path="res://Scenes/worm.tscn" id="4_qqy2t"]
 [ext_resource type="PackedScene" uid="uid://de5dvjwm66mpk" path="res://Scenes/money_bar.tscn" id="5_spq87"]
+[ext_resource type="Script" uid="uid://ctrf4jw5qvyv3" path="res://Scripts/end_game.gd" id="11_1sc7q"]
 
 [node name="DebugRi" type="Node2D"]
 
@@ -86,3 +87,19 @@ offset_bottom = 346.0
 
 [node name="Worm" parent="." instance=ExtResource("4_qqy2t")]
 position = Vector2(777, 450)
+
+[node name="GameOver" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Button" type="Button" parent="GameOver"]
+offset_right = 92.0
+offset_bottom = 31.0
+text = "END GAME"
+script = ExtResource("11_1sc7q")
+
+[connection signal="pressed" from="GameOver/Button" to="GameOver/Button" method="_on_pressed"]
