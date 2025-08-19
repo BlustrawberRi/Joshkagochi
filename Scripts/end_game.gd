@@ -39,7 +39,7 @@ func _ready():
 	self.visible = false
 	StatsManager.stat_change.connect(check_set_visible)
 
-func check_set_visible():
+func check_set_visible(_stat, _value):
 	current_item_uses += 1
 	if (current_item_uses >= visible_after_item_uses):
 		self.visible = true

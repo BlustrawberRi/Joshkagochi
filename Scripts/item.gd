@@ -1,9 +1,7 @@
 extends Control
 class_name Item
 
-
-@export var stat: StatsManager.stats
-@export_range(-20,0, 1.0) var difference: float = -10
+@export var influences: Dictionary [StatsManager.stats, int]
 
 var _is_pressed : bool
 var _mouse_pos_offset : Vector2

@@ -18,10 +18,11 @@ func _ready():
 
 func calculate_mood():
 	var previous_mood = mood
-	var total_stimulation = 0
+	var total_stimulation:float = 0
 	for stat in StatsManager.stats_dict:
+		if stat == StatsManager.stats.crime: continue # don't count crime
 		total_stimulation += StatsManager.get_stat_value(stat)
-	total_stimulation = total_stimulation/StatsManager.stats_dict.size()
+	total_stimulation = total_stimulation/(StatsManager.stats_dict.size()-1)
 
 	print("stim: ",total_stimulation)
 	
@@ -55,8 +56,10 @@ func _on_area_entered(area):
 	var item = area.get_parent()
 	if item is not Item: return
 
-	print(StatsManager.stats.find_key( item.stat))
-	StatsManager.update_stat(item.stat, item.difference)
+	for s in item.influences:
+		print (StatsManager.stats.find_key(s), item.influences[s])
+		#print(StatsManager.stats.find_key( s.key))
+		StatsManager.update_stat(s, item.influences[s])
 	# todo: start remedy periodical update
 
 

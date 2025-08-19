@@ -48,23 +48,6 @@ offset_right = 1091.0
 offset_bottom = 403.0
 grow_horizontal = 0
 
-[node name="Item" parent="Items" instance=ExtResource("2_6xvl5")]
-layout_mode = 1
-offset_left = 380.0
-offset_top = 520.0
-offset_right = 380.0
-offset_bottom = 520.0
-
-[node name="Boredom" parent="Items" instance=ExtResource("1_dvldc")]
-layout_mode = 2
-anchors_preset = 0
-anchor_right = 0.0
-anchor_bottom = 0.0
-offset_left = 452.0
-offset_top = 678.0
-offset_right = 580.0
-offset_bottom = 678.0
-
 [node name="Thirst" parent="Items" instance=ExtResource("2_pl56k")]
 layout_mode = 2
 anchors_preset = 0
@@ -74,6 +57,10 @@ offset_left = 343.0
 offset_top = 155.0
 offset_right = 471.0
 offset_bottom = 155.0
+influences = Dictionary[int, int]({
+1: -10,
+3: -10
+})
 
 [node name="Anger" parent="Items" instance=ExtResource("3_6xvl5")]
 layout_mode = 2
@@ -84,6 +71,34 @@ offset_left = 366.0
 offset_top = 346.0
 offset_right = 494.0
 offset_bottom = 346.0
+influences = Dictionary[int, int]({
+2: -10,
+4: 10
+})
+
+[node name="Money" parent="Items" instance=ExtResource("2_6xvl5")]
+layout_mode = 1
+offset_left = 380.0
+offset_top = 520.0
+offset_right = 380.0
+offset_bottom = 327.0
+influences = Dictionary[int, int]({
+2: 7,
+3: 15
+})
+
+[node name="Boredom" parent="Items" instance=ExtResource("1_dvldc")]
+layout_mode = 2
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_left = 452.0
+offset_top = 678.0
+offset_right = 580.0
+offset_bottom = 678.0
+influences = Dictionary[int, int]({
+0: -7
+})
 
 [node name="Worm" parent="." instance=ExtResource("4_qqy2t")]
 position = Vector2(777, 450)
@@ -97,8 +112,11 @@ grow_horizontal = 2
 grow_vertical = 2
 
 [node name="Button" type="Button" parent="GameOver"]
-offset_right = 92.0
-offset_bottom = 31.0
+layout_mode = 0
+offset_left = 43.0
+offset_top = 39.0
+offset_right = 135.0
+offset_bottom = 70.0
 text = "END GAME"
 script = ExtResource("11_1sc7q")
 
