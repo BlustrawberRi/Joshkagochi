@@ -1,4 +1,4 @@
-[gd_scene load_steps=13 format=3 uid="uid://cewl6bledbexq"]
+[gd_scene load_steps=17 format=3 uid="uid://cewl6bledbexq"]
 
 [ext_resource type="PackedScene" uid="uid://dkflewpumsmbr" path="res://Scenes/boredom_remedy.tscn" id="1_dvldc"]
 [ext_resource type="Texture2D" uid="uid://h3hrdt4wybct" path="res://Images/tamagotchi_bg.png" id="1_pl56k"]
@@ -12,6 +12,18 @@
 [ext_resource type="PackedScene" uid="uid://de5dvjwm66mpk" path="res://Scenes/money_bar.tscn" id="5_spq87"]
 [ext_resource type="PackedScene" uid="uid://do8k5dqrgvc1d" path="res://Scenes/stat_timer.tscn" id="10_lc5mr"]
 [ext_resource type="Script" uid="uid://ctrf4jw5qvyv3" path="res://Scripts/end_game.gd" id="11_1sc7q"]
+[ext_resource type="StyleBox" uid="uid://bqfy416l4ge5i" path="res://resources/new_style_box_flat.tres" id="13_2l4pm"]
+[ext_resource type="StyleBox" uid="uid://dv4v4stfnqgex" path="res://resources/new_style_box_flat_up.tres" id="14_aphlv"]
+
+[sub_resource type="SystemFont" id="SystemFont_2ekk1"]
+font_names = PackedStringArray("Bahnschrift")
+
+[sub_resource type="Theme" id="Theme_bi43j"]
+Panel/styles/panel = ExtResource("13_2l4pm")
+Panel/styles/up = ExtResource("14_aphlv")
+RichTextLabel/constants/outline_size = 4
+RichTextLabel/font_sizes/normal_font_size = 22
+RichTextLabel/fonts/normal_font = SubResource("SystemFont_2ekk1")
 
 [node name="DebugRi" type="Node2D"]
 
@@ -131,4 +143,51 @@ offset_bottom = 70.0
 text = "END GAME"
 script = ExtResource("11_1sc7q")
 
+[node name="Flavor" type="Panel" parent="GameOver"]
+layout_mode = 0
+offset_left = 457.0
+offset_top = 590.0
+offset_right = 1093.0
+offset_bottom = 726.0
+theme = SubResource("Theme_bi43j")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="GameOver/Flavor"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 13.0
+offset_top = 17.0
+offset_right = -12.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "THIS IS THE FLAVOR TEXT FOR YOUR RESULT
+"
+horizontal_alignment = 1
+
+[node name="Guy" type="Panel" parent="GameOver"]
+layout_mode = 0
+offset_left = 458.0
+offset_top = 223.0
+offset_right = 1094.0
+offset_bottom = 278.0
+theme = SubResource("Theme_bi43j")
+theme_override_styles/panel = ExtResource("14_aphlv")
+
+[node name="RichTextLabel" type="RichTextLabel" parent="GameOver/Guy"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = 13.0
+offset_top = 17.0
+offset_right = -12.0
+offset_bottom = -15.0
+grow_horizontal = 2
+grow_vertical = 2
+text = "THIS IS WHAT TYPE OF GUY YOU GOT"
+horizontal_alignment = 1
+
+[connection signal="pressed" from="GameOver/Button" to="Worm" method="_on_game_over_pressed"]
 [connection signal="pressed" from="GameOver/Button" to="GameOver/Button" method="_on_pressed"]

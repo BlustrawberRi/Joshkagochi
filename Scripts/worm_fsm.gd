@@ -12,9 +12,14 @@ enum Shape{chill, active}
 var is_idling: bool
 var tween: Tween
 
+var origin: Vector2
+
+var is_game_over: bool = false
+
 func _ready():
 	shape = Shape.chill
 	update_shape()
+	origin = self.position
 	update_face()
 	calculate_mood()
 	StatsManager.stat_change.connect(_on_stat_changed)
@@ -32,7 +37,7 @@ func calculate_mood():
 		stat_count += 1
 	total_stimulation = total_stimulation/stat_count
 
-	print("stim: ",total_stimulation)
+	#print("stim: ",total_stimulation)
 	
 	if total_stimulation > 70:
 		mood = Mood.bad
@@ -66,6 +71,7 @@ func update_shape():
 
 	
 func _on_stat_changed(_stat, _value):
+	if is_game_over: return
 	calculate_mood()
 
 func _on_area_entered(area):
@@ -73,7 +79,7 @@ func _on_area_entered(area):
 	if item is not Item: return
 
 	for s in item.influences:
-		print (StatsManager.stats.find_key(s), item.influences[s])
+		#print (StatsManager.stats.find_key(s), item.influences[s])
 		StatsManager.update_stat(s, item.influences[s])
 
 	shape = Shape.active
@@ -104,3 +110,14 @@ func idle():
 	await tween.tween_interval(randf_range(1.2, 2.3)).finished
 	tween.kill()
 	if (is_idling): idle()
+
+
+func _on_game_over_pressed():
+	is_game_over = true
+	is_idling = false
+	tween.kill()
+	tween = get_tree().create_tween()
+	tween.tween_property(self, "position", origin, 1.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
+	await tween.tween_interval(1.0).finished
+	tween.kill()
+	pass # Replace with function body.

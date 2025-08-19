@@ -10,7 +10,7 @@ var origin_pos: Vector2
 
 func _ready():
 	await get_tree().process_frame
-	print(self.position)
+	#print(self.position)
 	origin_pos = self.position
 
 func _process(_delta):
