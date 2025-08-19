@@ -4,14 +4,17 @@ enum Mood{good,meh,bad}
 enum Shape{chill, active}
 
 @export var mood : Mood
-
 @export var shape : Shape
+
 @onready var face : AnimatedSprite2D = $CollisionShape2D/Face 
+@onready var animation : AnimationPlayer = $AnimationPlayer
 
 var is_idling: bool
 var tween: Tween
 
 func _ready():
+	shape = Shape.chill
+	update_shape()
 	update_face()
 	calculate_mood()
 	StatsManager.stat_change.connect(_on_stat_changed)
@@ -48,6 +51,14 @@ func update_face():
 			face.play("default")
 		Mood.bad:
 			face.play("bad")
+
+func update_shape():
+	match shape:
+		Shape.chill:
+			animation.play("chilling")
+		Shape.active:
+			animation.play("active")
+
 	
 func _on_stat_changed(_stat, _value):
 	calculate_mood()
@@ -58,13 +69,17 @@ func _on_area_entered(area):
 
 	for s in item.influences:
 		print (StatsManager.stats.find_key(s), item.influences[s])
-		#print(StatsManager.stats.find_key( s.key))
 		StatsManager.update_stat(s, item.influences[s])
+
+	shape = Shape.active
+	update_shape()
 	# todo: start remedy periodical update
 
 
-# func _on_area_exited(area)
-#	todo: stop remedies
+func _on_area_exited(area):
+	shape = Shape.chill
+	update_shape()
+	#	todo: stop remedies
 
 func idle(): 
 	is_idling = true
