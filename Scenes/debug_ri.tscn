@@ -133,6 +133,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+script = ExtResource("11_1sc7q")
 
 [node name="Button" type="Button" parent="GameOver"]
 layout_mode = 0
@@ -141,7 +142,6 @@ offset_top = 39.0
 offset_right = 135.0
 offset_bottom = 70.0
 text = "END GAME"
-script = ExtResource("11_1sc7q")
 
 [node name="Flavor" type="Panel" parent="GameOver"]
 layout_mode = 0
@@ -149,6 +149,7 @@ offset_left = 457.0
 offset_top = 590.0
 offset_right = 1093.0
 offset_bottom = 726.0
+pivot_offset = Vector2(318, 68)
 theme = SubResource("Theme_bi43j")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="GameOver/Flavor"]
@@ -162,18 +163,28 @@ offset_right = -12.0
 offset_bottom = -15.0
 grow_horizontal = 2
 grow_vertical = 2
+bbcode_enabled = true
 text = "THIS IS THE FLAVOR TEXT FOR YOUR RESULT
 "
 horizontal_alignment = 1
 
 [node name="Guy" type="Panel" parent="GameOver"]
-layout_mode = 0
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
 offset_left = 458.0
-offset_top = 223.0
+offset_top = 224.0
 offset_right = 1094.0
-offset_bottom = 278.0
+offset_bottom = 279.0
+grow_horizontal = 2
+grow_vertical = 2
+pivot_offset = Vector2(318, 27.5)
 theme = SubResource("Theme_bi43j")
 theme_override_styles/panel = ExtResource("14_aphlv")
+metadata/_edit_use_anchors_ = true
 
 [node name="RichTextLabel" type="RichTextLabel" parent="GameOver/Guy"]
 layout_mode = 1
@@ -186,8 +197,9 @@ offset_right = -12.0
 offset_bottom = -15.0
 grow_horizontal = 2
 grow_vertical = 2
+bbcode_enabled = true
 text = "THIS IS WHAT TYPE OF GUY YOU GOT"
 horizontal_alignment = 1
 
 [connection signal="pressed" from="GameOver/Button" to="Worm" method="_on_game_over_pressed"]
-[connection signal="pressed" from="GameOver/Button" to="GameOver/Button" method="_on_pressed"]
+[connection signal="pressed" from="GameOver/Button" to="GameOver" method="_on_pressed"]

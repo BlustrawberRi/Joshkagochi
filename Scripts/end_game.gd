@@ -1,4 +1,9 @@
-extends Button
+extends Control
+
+@onready 
+var flavor_panel = $Flavor
+@onready
+var guy_panel = $Guy
 
 var possible_results = [
 	"nerd", "depressed", "thirst_trap", "furry", "tax_fraud", "smooth_criminal"
@@ -54,6 +59,15 @@ var result_stats = {
 	}
 }
 
+var result_texts = {
+	"nerd": ["YOU MADE A [rainbow]NERD[/rainbow]", "lol. lmao. *shoves u into a locker*"],
+	"depressed": ["YOU GOT... oh- uh.. you got depressed :(", "it happens to the best of us <:) Dont be hard on yourself. It's never too late to try again!"],
+	"thirst_trap": ["YOU MADE A [rainbow]NERD[/rainbow]", "lol. lmao. *shoves u into a locker*"],
+	"furry": ["YOU MADE A [rainbow]FURRY[/rainbow]", "owo what's this? *baps u* :3"],
+	"tax_fraud": ["THE IRS IS KNOCKING", "You made so much money. there's no way you made this much and not get depressed. the only possible way to make this much money.... is TAX FRAUD!!!"],
+	"smooth_criminal": ["YOU'VE BEEN HIT BY- YOU'VE BEEN STRUCK BY- A [rainbow]SMOOTH CRIMINAL[/rainbow]", "all that playing around with knives has been paying off."],
+}
+
 signal end_game
 
 var visible_after_item_uses = 5
@@ -62,6 +76,8 @@ var current_item_uses = 0
 func _ready():
 	self.visible = false
 	StatsManager.stat_change.connect(check_set_visible)
+	guy_panel.size.y = 0.0
+	flavor_panel.size.y = 0.0
 
 func check_set_visible(_stat, _value):
 	current_item_uses += 1
@@ -84,10 +100,16 @@ func calc_result():
 			absolute_distance = local_distance
 			target = result
 	print("the joshkagotchi will be ", target)
-	return target
+	return result_texts.get(target)
 	
 
 func _on_pressed():
-	calc_result()
+	var result = calc_result()
 	emit_signal("end_game")
+	guy_panel.get_child(0).text = result[0]
+	flavor_panel.get_child(0).text = result[1]
+	var tween = get_tree().create_tween()
+	await tween.tween_interval(1.0)
+	tween.tween_property(guy_panel, "size", Vector2(636, 55), 1.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BOUNCE)
+	tween.tween_property(flavor_panel, "size", Vector2(636, 136), 1.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BOUNCE)
 	pass # Replace with function body.
