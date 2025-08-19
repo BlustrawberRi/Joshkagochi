@@ -3,10 +3,10 @@ extends Node
 enum stats {boredom, thirst, anger, money, crime}
 
 var stats_dict := {
-	stats.boredom : 10.0,
+	stats.boredom : 30.0,
 	stats.thirst : 0.0,
 	stats.anger : 0.0,
-	stats.money : 75.0,
+	stats.money : 70.0,
 	stats.crime : 0.0,
 }
 

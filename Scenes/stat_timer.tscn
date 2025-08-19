@@ -1,0 +1,10 @@
+[gd_scene load_steps=2 format=3 uid="uid://do8k5dqrgvc1d"]
+
+[ext_resource type="Script" uid="uid://dox7loax5oy6o" path="res://Scripts/stat_timer.gd" id="1_88npk"]
+
+[node name="StatTimer" type="Timer"]
+autostart = true
+script = ExtResource("1_88npk")
+change = 5
+
+[connection signal="timeout" from="." to="." method="_on_timeout"]

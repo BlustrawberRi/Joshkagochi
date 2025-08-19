@@ -22,10 +22,15 @@ func _ready():
 func calculate_mood():
 	var previous_mood = mood
 	var total_stimulation:float = 0
+	var stat_count:int = 0
 	for stat in StatsManager.stats_dict:
 		if stat == StatsManager.stats.crime: continue # don't count crime
-		total_stimulation += StatsManager.get_stat_value(stat)
-	total_stimulation = total_stimulation/(StatsManager.stats_dict.size()-1)
+		if stat == StatsManager.stats.money:
+			total_stimulation += 100 - StatsManager.get_stat_value(stat)
+		else:
+			total_stimulation += StatsManager.get_stat_value(stat)
+		stat_count += 1
+	total_stimulation = total_stimulation/stat_count
 
 	print("stim: ",total_stimulation)
 	
@@ -76,7 +81,7 @@ func _on_area_entered(area):
 	# todo: start remedy periodical update
 
 
-func _on_area_exited(area):
+func _on_area_exited(_area):
 	shape = Shape.chill
 	update_shape()
 	#	todo: stop remedies
