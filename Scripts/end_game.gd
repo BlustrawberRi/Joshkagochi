@@ -4,6 +4,8 @@ extends Control
 var flavor_panel = $Flavor
 @onready
 var guy_panel = $Guy
+@onready
+var result_sprite : AnimatedSprite2D = $ResultSprite
 
 var possible_results = [
 	"nerd", "depressed", "thirst_trap", "furry", "tax_fraud", "smooth_criminal"
@@ -62,10 +64,10 @@ var result_stats = {
 var result_texts = {
 	"nerd": ["YOU MADE A [rainbow]NERD[/rainbow]", "lol. lmao. *shoves u into a locker*"],
 	"depressed": ["YOU GOT... oh- uh.. you got depressed :(", "it happens to the best of us <:) Dont be hard on yourself. It's never too late to try again!"],
-	"thirst_trap": ["YOU MADE A [rainbow]NERD[/rainbow]", "lol. lmao. *shoves u into a locker*"],
+	"thirst_trap": ["Thirst trap", "You got no money and are too hot. We gonna make lemonade out of this somehow.."],
 	"furry": ["YOU MADE A [rainbow]FURRY[/rainbow]", "owo what's this? *baps u* :3"],
 	"tax_fraud": ["THE IRS IS KNOCKING", "You made so much money. there's no way you made this much and not get depressed. the only possible way to make this much money.... is TAX FRAUD!!!"],
-	"smooth_criminal": ["YOU'VE BEEN HIT BY- YOU'VE BEEN STRUCK BY- A [rainbow]SMOOTH CRIMINAL[/rainbow]", "all that playing around with knives has been paying off."],
+	"smooth_criminal": ["YOU'VE BEEN HIT BY- YOU'VE BEEN STRUCK BY-", " A [rainbow]SMOOTH CRIMINAL[/rainbow]. All that playing around with knives has been paying off."],
 }
 
 signal end_game
@@ -78,6 +80,7 @@ func _ready():
 	StatsManager.stat_change.connect(check_set_visible)
 	guy_panel.size.y = 0.0
 	flavor_panel.size.y = 0.0
+	result_sprite.self_modulate = Color(1,1,1,0);
 
 func check_set_visible(_stat, _value):
 	current_item_uses += 1
@@ -100,16 +103,22 @@ func calc_result():
 			absolute_distance = local_distance
 			target = result
 	print("the joshkagotchi will be ", target)
-	return result_texts.get(target)
+	return target
 	
 
 func _on_pressed():
 	var result = calc_result()
+	var result_text = result_texts.get(result)
 	emit_signal("end_game")
-	guy_panel.get_child(0).text = result[0]
-	flavor_panel.get_child(0).text = result[1]
+
+	result_sprite.play(result)
+	guy_panel.get_child(0).text = result_text[0]
+	flavor_panel.get_child(0).text = result_text[1]
 	var tween = get_tree().create_tween()
 	await tween.tween_interval(1.0)
+	
+	tween.tween_property(result_sprite, "self_modulate", Color(1,1,1,1), 1.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
 	tween.tween_property(guy_panel, "size", Vector2(636, 55), 1.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BOUNCE)
 	tween.tween_property(flavor_panel, "size", Vector2(636, 136), 1.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BOUNCE)
+
 	pass # Replace with function body.

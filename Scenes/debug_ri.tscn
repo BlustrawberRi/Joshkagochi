@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=3 uid="uid://cewl6bledbexq"]
+[gd_scene load_steps=24 format=3 uid="uid://cewl6bledbexq"]
 
 [ext_resource type="PackedScene" uid="uid://dkflewpumsmbr" path="res://Scenes/boredom_remedy.tscn" id="1_dvldc"]
 [ext_resource type="Texture2D" uid="uid://h3hrdt4wybct" path="res://Images/tamagotchi_bg.png" id="1_pl56k"]
@@ -13,7 +13,64 @@
 [ext_resource type="PackedScene" uid="uid://do8k5dqrgvc1d" path="res://Scenes/stat_timer.tscn" id="10_lc5mr"]
 [ext_resource type="Script" uid="uid://ctrf4jw5qvyv3" path="res://Scripts/end_game.gd" id="11_1sc7q"]
 [ext_resource type="StyleBox" uid="uid://bqfy416l4ge5i" path="res://resources/new_style_box_flat.tres" id="13_2l4pm"]
+[ext_resource type="Texture2D" uid="uid://c63lvwoqtk2q8" path="res://Images/result_depressed.png" id="13_bi43j"]
 [ext_resource type="StyleBox" uid="uid://dv4v4stfnqgex" path="res://resources/new_style_box_flat_up.tres" id="14_aphlv"]
+[ext_resource type="Texture2D" uid="uid://df8tori5aeqk6" path="res://Images/result_furry.png" id="14_u4aci"]
+[ext_resource type="Texture2D" uid="uid://sy8ejdbxhugg" path="res://Images/result_nerd.png" id="15_m54ty"]
+[ext_resource type="Texture2D" uid="uid://bbgsohfiugmc5" path="res://Images/result_smooth_criminal.png" id="16_pgaf4"]
+[ext_resource type="Texture2D" uid="uid://b8b1mpyk6w2t0" path="res://Images/result_tax_fraud.png" id="17_14vc2"]
+[ext_resource type="Texture2D" uid="uid://cst0d5ug2s0bf" path="res://Images/result_thirst_trap.png" id="18_bbjxi"]
+
+[sub_resource type="SpriteFrames" id="SpriteFrames_pgaf4"]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("13_bi43j")
+}],
+"loop": true,
+"name": &"depressed",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("14_u4aci")
+}],
+"loop": true,
+"name": &"furry",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("15_m54ty")
+}],
+"loop": true,
+"name": &"nerd",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("16_pgaf4")
+}],
+"loop": true,
+"name": &"smooth_criminal",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("17_14vc2")
+}],
+"loop": true,
+"name": &"tax_fraud",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("18_bbjxi")
+}],
+"loop": true,
+"name": &"thirst_trap",
+"speed": 5.0
+}]
 
 [sub_resource type="SystemFont" id="SystemFont_2ekk1"]
 font_names = PackedStringArray("Bahnschrift")
@@ -142,6 +199,11 @@ offset_top = 39.0
 offset_right = 135.0
 offset_bottom = 70.0
 text = "END GAME"
+
+[node name="ResultSprite" type="AnimatedSprite2D" parent="GameOver"]
+position = Vector2(776, 482)
+sprite_frames = SubResource("SpriteFrames_pgaf4")
+animation = &"depressed"
 
 [node name="Flavor" type="Panel" parent="GameOver"]
 layout_mode = 0
