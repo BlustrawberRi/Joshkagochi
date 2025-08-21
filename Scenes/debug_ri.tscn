@@ -1,4 +1,4 @@
-[gd_scene load_steps=25 format=3 uid="uid://cewl6bledbexq"]
+[gd_scene load_steps=26 format=3 uid="uid://cewl6bledbexq"]
 
 [ext_resource type="PackedScene" uid="uid://dkflewpumsmbr" path="res://Scenes/boredom_remedy.tscn" id="1_dvldc"]
 [ext_resource type="Texture2D" uid="uid://h3hrdt4wybct" path="res://Images/tamagotchi_bg.png" id="1_pl56k"]
@@ -21,6 +21,7 @@
 [ext_resource type="Texture2D" uid="uid://b8b1mpyk6w2t0" path="res://Images/result_tax_fraud.png" id="17_14vc2"]
 [ext_resource type="Texture2D" uid="uid://cst0d5ug2s0bf" path="res://Images/result_thirst_trap.png" id="18_bbjxi"]
 [ext_resource type="Texture2D" uid="uid://b602yxtkv0bil" path="res://Images/smoke_texture.png" id="21_14vc2"]
+[ext_resource type="AudioStream" uid="uid://vy0j8xengn63" path="res://sounds/ねこワークショップ.mp3" id="22_bbjxi"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pgaf4"]
 animations = [{
@@ -299,6 +300,10 @@ angle_min = -184.9
 angle_max = 145.9
 color_ramp = SubResource("Gradient_2ekk1")
 color_initial_ramp = SubResource("Gradient_bi43j")
+
+[node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
+stream = ExtResource("22_bbjxi")
+autoplay = true
 
 [connection signal="pressed" from="GameOver/VBoxContainer/End" to="Worm" method="_on_game_over_pressed"]
 [connection signal="pressed" from="GameOver/VBoxContainer/End" to="GameOver" method="_on_pressed"]
