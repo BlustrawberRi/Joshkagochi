@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://bxshved3v5uq0"]
+
+[ext_resource type="PackedScene" uid="uid://dgejybltxyhui" path="res://Scenes/result_entry.tscn" id="1_0u5wr"]
+[ext_resource type="Texture2D" uid="uid://b8b1mpyk6w2t0" path="res://Images/result_tax_fraud.png" id="2_6xevk"]
+
+[node name="ResultEntry" instance=ExtResource("1_0u5wr")]
+guy = "Tax Evader"
+
+[node name="Result" parent="." index="0"]
+texture = ExtResource("2_6xevk")

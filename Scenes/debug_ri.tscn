@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://cewl6bledbexq"]
+[gd_scene load_steps=38 format=3 uid="uid://cewl6bledbexq"]
 
 [ext_resource type="PackedScene" uid="uid://dkflewpumsmbr" path="res://Scenes/boredom_remedy.tscn" id="1_dvldc"]
 [ext_resource type="Texture2D" uid="uid://h3hrdt4wybct" path="res://Images/tamagotchi_bg.png" id="1_pl56k"]
@@ -13,6 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://do8k5dqrgvc1d" path="res://Scenes/stat_timer.tscn" id="10_lc5mr"]
 [ext_resource type="Script" uid="uid://ctrf4jw5qvyv3" path="res://Scripts/end_game.gd" id="11_1sc7q"]
 [ext_resource type="Theme" uid="uid://bwby7d3nkgdmq" path="res://resources/theme.tres" id="12_pgaf4"]
+[ext_resource type="StyleBox" uid="uid://bqfy416l4ge5i" path="res://resources/new_style_box_flat.tres" id="13_2l4pm"]
 [ext_resource type="Texture2D" uid="uid://c63lvwoqtk2q8" path="res://Images/result_depressed.png" id="13_bi43j"]
 [ext_resource type="StyleBox" uid="uid://dv4v4stfnqgex" path="res://resources/new_style_box_flat_up.tres" id="14_aphlv"]
 [ext_resource type="Texture2D" uid="uid://df8tori5aeqk6" path="res://Images/result_furry.png" id="14_u4aci"]
@@ -22,6 +23,13 @@
 [ext_resource type="Texture2D" uid="uid://cst0d5ug2s0bf" path="res://Images/result_thirst_trap.png" id="18_bbjxi"]
 [ext_resource type="Texture2D" uid="uid://b602yxtkv0bil" path="res://Images/smoke_texture.png" id="21_14vc2"]
 [ext_resource type="AudioStream" uid="uid://vy0j8xengn63" path="res://sounds/ねこワークショップ.mp3" id="22_bbjxi"]
+[ext_resource type="Script" uid="uid://c8t1al7b34e4d" path="res://Scripts/enguyclopedia.gd" id="23_qmqi8"]
+[ext_resource type="PackedScene" uid="uid://dimbshn83p5ga" path="res://Scenes/result_entry_depressed.tscn" id="24_2awfh"]
+[ext_resource type="PackedScene" uid="uid://d3rg7at4khy04" path="res://Scenes/result_entry_furry.tscn" id="25_qmqi8"]
+[ext_resource type="PackedScene" uid="uid://dk3tq63ct4eyc" path="res://Scenes/result_entry_nerd.tscn" id="26_bc0do"]
+[ext_resource type="PackedScene" uid="uid://faa7t2bj8lr8" path="res://Scenes/result_entry_smooth_criminal.tscn" id="27_aa3v1"]
+[ext_resource type="PackedScene" uid="uid://bxshved3v5uq0" path="res://Scenes/result_entry_tax_evader.tscn" id="28_agea2"]
+[ext_resource type="PackedScene" uid="uid://c6lntkblbil36" path="res://Scenes/result_entry_thirst_trap.tscn" id="29_uv8vd"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pgaf4"]
 animations = [{
@@ -30,7 +38,7 @@ animations = [{
 "texture": ExtResource("13_bi43j")
 }],
 "loop": true,
-"name": &"depressed",
+"name": &"Depressed Baby",
 "speed": 5.0
 }, {
 "frames": [{
@@ -38,7 +46,7 @@ animations = [{
 "texture": ExtResource("14_u4aci")
 }],
 "loop": true,
-"name": &"furry",
+"name": &"Furry",
 "speed": 5.0
 }, {
 "frames": [{
@@ -46,7 +54,7 @@ animations = [{
 "texture": ExtResource("15_m54ty")
 }],
 "loop": true,
-"name": &"nerd",
+"name": &"Nerd",
 "speed": 5.0
 }, {
 "frames": [{
@@ -54,7 +62,7 @@ animations = [{
 "texture": ExtResource("16_pgaf4")
 }],
 "loop": true,
-"name": &"smooth_criminal",
+"name": &"Smooth Criminal",
 "speed": 5.0
 }, {
 "frames": [{
@@ -62,7 +70,7 @@ animations = [{
 "texture": ExtResource("17_14vc2")
 }],
 "loop": true,
-"name": &"tax_fraud",
+"name": &"Tax Evader",
 "speed": 5.0
 }, {
 "frames": [{
@@ -70,7 +78,7 @@ animations = [{
 "texture": ExtResource("18_bbjxi")
 }],
 "loop": true,
-"name": &"thirst_trap",
+"name": &"Thirst Trap",
 "speed": 5.0
 }]
 
@@ -81,6 +89,33 @@ colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 [sub_resource type="Gradient" id="Gradient_bi43j"]
 offsets = PackedFloat32Array(0, 0.524444, 1)
 colors = PackedColorArray(0.522857, 0.246115, 0.602008, 1, 0.582165, 0.595755, 0.614219, 1, 0.399367, 0.59888, 0.472495, 1)
+
+[sub_resource type="SystemFont" id="SystemFont_7ct1h"]
+font_names = PackedStringArray("Bahnschrift")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_886mr"]
+bg_color = Color(0.709804, 0.317647, 0.721569, 0.560784)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.396078, 0.678431, 0.0431373, 1)
+border_blend = true
+
+[sub_resource type="SystemFont" id="SystemFont_2ekk1"]
+font_names = PackedStringArray("Bahnschrift")
+
+[sub_resource type="Theme" id="Theme_wq4n5"]
+Button/colors/font_outline_color = Color(0, 0.233102, 0.19435, 1)
+Button/constants/outline_size = 3
+Button/fonts/font = SubResource("SystemFont_7ct1h")
+Button/styles/normal = SubResource("StyleBoxFlat_886mr")
+Panel/styles/panel = ExtResource("13_2l4pm")
+Panel/styles/up = ExtResource("14_aphlv")
+RichTextLabel/colors/font_outline_color = Color(0.116533, 0.262177, 0.175131, 1)
+RichTextLabel/constants/outline_size = 4
+RichTextLabel/font_sizes/normal_font_size = 22
+RichTextLabel/fonts/normal_font = SubResource("SystemFont_2ekk1")
 
 [node name="DebugRi" type="Node2D"]
 
@@ -213,7 +248,7 @@ text = "TRY AGAIN
 [node name="ResultSprite" type="AnimatedSprite2D" parent="GameOver"]
 position = Vector2(776, 482)
 sprite_frames = SubResource("SpriteFrames_pgaf4")
-animation = &"depressed"
+animation = &"Tax Evader"
 
 [node name="Flavor" type="Panel" parent="GameOver"]
 layout_mode = 0
@@ -303,9 +338,80 @@ color_initial_ramp = SubResource("Gradient_bi43j")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("22_bbjxi")
+volume_db = -10.0
 autoplay = true
+
+[node name="Enguyclopedia" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("12_pgaf4")
+script = ExtResource("23_qmqi8")
+
+[node name="Panel" type="Panel" parent="Enguyclopedia"]
+visible = false
+layout_mode = 0
+offset_right = 1599.0
+offset_bottom = 894.0
+theme = SubResource("Theme_wq4n5")
+
+[node name="ScrollContainer" type="ScrollContainer" parent="Enguyclopedia/Panel"]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 110.0
+offset_right = 1569.0
+offset_bottom = 705.0
+
+[node name="HBoxContainer" type="HBoxContainer" parent="Enguyclopedia/Panel/ScrollContainer"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="ResultEntry" parent="Enguyclopedia/Panel/ScrollContainer/HBoxContainer" instance=ExtResource("24_2awfh")]
+layout_mode = 2
+
+[node name="ResultEntry2" parent="Enguyclopedia/Panel/ScrollContainer/HBoxContainer" instance=ExtResource("25_qmqi8")]
+layout_mode = 2
+
+[node name="ResultEntry3" parent="Enguyclopedia/Panel/ScrollContainer/HBoxContainer" instance=ExtResource("26_bc0do")]
+layout_mode = 2
+
+[node name="ResultEntry4" parent="Enguyclopedia/Panel/ScrollContainer/HBoxContainer" instance=ExtResource("27_aa3v1")]
+layout_mode = 2
+
+[node name="ResultEntry5" parent="Enguyclopedia/Panel/ScrollContainer/HBoxContainer" instance=ExtResource("28_agea2")]
+layout_mode = 2
+
+[node name="ResultEntry6" parent="Enguyclopedia/Panel/ScrollContainer/HBoxContainer" instance=ExtResource("29_uv8vd")]
+layout_mode = 2
+
+[node name="HScrollBar" type="HScrollBar" parent="Enguyclopedia/Panel"]
+visible = false
+layout_mode = 0
+offset_left = 66.0
+offset_top = 840.0
+offset_right = 1466.0
+offset_bottom = 848.0
+
+[node name="Button" type="Button" parent="Enguyclopedia"]
+layout_mode = 0
+offset_left = 58.0
+offset_top = 815.0
+offset_right = 182.0
+offset_bottom = 852.0
+text = "Enguyclopedia"
 
 [connection signal="pressed" from="GameOver/VBoxContainer/End" to="Worm" method="_on_game_over_pressed"]
 [connection signal="pressed" from="GameOver/VBoxContainer/End" to="GameOver" method="_on_pressed"]
+[connection signal="pressed" from="GameOver/VBoxContainer/End" to="Enguyclopedia/Panel/ScrollContainer/HBoxContainer/ResultEntry" method="_on_end_pressed"]
+[connection signal="pressed" from="GameOver/VBoxContainer/End" to="Enguyclopedia/Panel/ScrollContainer/HBoxContainer/ResultEntry2" method="_on_end_pressed"]
+[connection signal="pressed" from="GameOver/VBoxContainer/End" to="Enguyclopedia/Panel/ScrollContainer/HBoxContainer/ResultEntry3" method="_on_end_pressed"]
+[connection signal="pressed" from="GameOver/VBoxContainer/End" to="Enguyclopedia/Panel/ScrollContainer/HBoxContainer/ResultEntry4" method="_on_end_pressed"]
+[connection signal="pressed" from="GameOver/VBoxContainer/End" to="Enguyclopedia/Panel/ScrollContainer/HBoxContainer/ResultEntry5" method="_on_end_pressed"]
+[connection signal="pressed" from="GameOver/VBoxContainer/End" to="Enguyclopedia/Panel/ScrollContainer/HBoxContainer/ResultEntry6" method="_on_end_pressed"]
 [connection signal="pressed" from="GameOver/VBoxContainer/Reset" to="Worm" method="_on_reset_pressed"]
 [connection signal="pressed" from="GameOver/VBoxContainer/Reset" to="GameOver" method="_on_reset_pressed"]
+[connection signal="pressed" from="Enguyclopedia/Button" to="Enguyclopedia" method="_on_button_pressed"]

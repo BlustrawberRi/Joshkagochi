@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://dimbshn83p5ga"]
+
+[ext_resource type="PackedScene" uid="uid://dgejybltxyhui" path="res://Scenes/result_entry.tscn" id="1_w4mr8"]
+[ext_resource type="Texture2D" uid="uid://c63lvwoqtk2q8" path="res://Images/result_depressed.png" id="2_jylou"]
+
+[node name="ResultEntry" instance=ExtResource("1_w4mr8")]
+guy = "Depressed Baby"
+
+[node name="Result" parent="." index="0"]
+texture = ExtResource("2_jylou")

@@ -17,6 +17,7 @@ config/icon="res://icon.svg"
 [autoload]
 
 StatsManager="*res://Scripts/StatsManager.gd"
+ResultCalculator="*res://Scripts/ResultCalculator.gd"
 
 [display]
 

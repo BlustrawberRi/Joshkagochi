@@ -1,0 +1,13 @@
+[gd_scene load_steps=3 format=3 uid="uid://c6lntkblbil36"]
+
+[ext_resource type="PackedScene" uid="uid://dgejybltxyhui" path="res://Scenes/result_entry.tscn" id="1_rjuvc"]
+[ext_resource type="Texture2D" uid="uid://cst0d5ug2s0bf" path="res://Images/result_thirst_trap.png" id="2_sgqmj"]
+
+[node name="ResultEntry" instance=ExtResource("1_rjuvc")]
+guy = "Thirst Trap"
+
+[node name="Result" parent="." index="0"]
+texture = ExtResource("2_sgqmj")
+
+[node name="Name" parent="." index="1"]
+text = "Thirst Trap"

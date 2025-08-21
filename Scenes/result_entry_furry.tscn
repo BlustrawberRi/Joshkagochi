@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3rg7at4khy04"]
+
+[ext_resource type="PackedScene" uid="uid://dgejybltxyhui" path="res://Scenes/result_entry.tscn" id="1_u7soo"]
+[ext_resource type="Texture2D" uid="uid://df8tori5aeqk6" path="res://Images/result_furry.png" id="2_dbokg"]
+
+[node name="ResultEntry" instance=ExtResource("1_u7soo")]
+guy = "Furry"
+
+[node name="Result" parent="." index="0"]
+texture = ExtResource("2_dbokg")

@@ -1,0 +1,26 @@
+[gd_scene load_steps=3 format=3 uid="uid://dgejybltxyhui"]
+
+[ext_resource type="Theme" uid="uid://bwby7d3nkgdmq" path="res://resources/theme.tres" id="1_2qgk2"]
+[ext_resource type="Script" uid="uid://f38h0lhr7ofb" path="res://Scripts/result_entry.gd" id="2_o6j3j"]
+
+[node name="ResultEntry" type="VBoxContainer"]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_right = -937.0
+offset_bottom = -364.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_2qgk2")
+theme_override_constants/separation = 1
+script = ExtResource("2_o6j3j")
+
+[node name="Result" type="TextureRect" parent="."]
+layout_mode = 2
+stretch_mode = 4
+
+[node name="Name" type="RichTextLabel" parent="."]
+layout_mode = 2
+theme_override_font_sizes/normal_font_size = 30
+fit_content = true
+horizontal_alignment = 1

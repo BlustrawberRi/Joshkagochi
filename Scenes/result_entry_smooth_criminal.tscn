@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://faa7t2bj8lr8"]
+
+[ext_resource type="PackedScene" uid="uid://dgejybltxyhui" path="res://Scenes/result_entry.tscn" id="1_jw6mf"]
+[ext_resource type="Texture2D" uid="uid://bbgsohfiugmc5" path="res://Images/result_smooth_criminal.png" id="2_bq0it"]
+
+[node name="ResultEntry" instance=ExtResource("1_jw6mf")]
+guy = "Smooth Criminal"
+
+[node name="Result" parent="." index="0"]
+texture = ExtResource("2_bq0it")

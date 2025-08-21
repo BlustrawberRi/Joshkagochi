@@ -132,4 +132,6 @@ func _on_reset_pressed():
 	self.position = origin
 	update_face()
 	calculate_mood()
+	body.self_modulate = Color.WHITE
+	face.self_modulate = Color.WHITE
 	is_game_over = false
