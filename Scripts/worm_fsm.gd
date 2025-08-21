@@ -105,6 +105,12 @@ func idle():
 	target_x = clampi(target_x, 560, 991)
 	var target_y = position.y + randi_range(-50, 50) * 2
 	target_y = clampi(target_y, 356, 594)
+	if(target_x <= self.position.x):
+		body.flip_h = false
+		face.flip_h = false
+	else:
+		body.flip_h = true
+		face.flip_h = true
 	
 	var target_destination = Vector2(target_x, target_y)
 	tween = get_tree().create_tween()

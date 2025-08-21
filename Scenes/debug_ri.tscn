@@ -246,9 +246,10 @@ text = "TRY AGAIN
 "
 
 [node name="ResultSprite" type="AnimatedSprite2D" parent="GameOver"]
+visible = false
 position = Vector2(776, 482)
 sprite_frames = SubResource("SpriteFrames_pgaf4")
-animation = &"Tax Evader"
+animation = &"Depressed Baby"
 
 [node name="Flavor" type="Panel" parent="GameOver"]
 layout_mode = 0
