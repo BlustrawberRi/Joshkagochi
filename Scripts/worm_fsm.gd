@@ -7,6 +7,7 @@ enum Shape{chill, active}
 @export var shape : Shape
 
 @onready var face : AnimatedSprite2D = $CollisionShape2D/Face 
+@onready var body: Sprite2D = $CollisionShape2D/Body
 @onready var animation : AnimationPlayer = $AnimationPlayer
 
 var is_idling: bool
@@ -23,6 +24,7 @@ func _ready():
 	update_face()
 	calculate_mood()
 	StatsManager.stat_change.connect(_on_stat_changed)
+	
 
 func calculate_mood():
 	var previous_mood = mood
@@ -49,7 +51,7 @@ func calculate_mood():
 	if(previous_mood != mood):
 		update_face()
 
-	if(mood != Mood.bad):
+	if(mood != Mood.bad && !is_idling):
 		$AnimationPlayer.play("chilling")
 		idle()
 
@@ -120,4 +122,21 @@ func _on_game_over_pressed():
 	tween.tween_property(self, "position", origin, 1.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
 	await tween.tween_interval(1.0).finished
 	tween.kill()
+	reduce_worm()
+	
 	pass # Replace with function body.
+
+func reduce_worm():
+	tween = get_tree().create_tween()
+	tween.set_parallel(true)
+	tween.tween_property(self, "scale", Vector2.ZERO, 1.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
+	tween.kill()
+
+
+func _on_reset_pressed():
+	shape = Shape.chill
+	update_shape()
+	self.position = origin
+	update_face()
+	calculate_mood()
+	is_game_over = false

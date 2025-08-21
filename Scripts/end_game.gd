@@ -6,6 +6,10 @@ var flavor_panel = $Flavor
 var guy_panel = $Guy
 @onready
 var result_sprite : AnimatedSprite2D = $ResultSprite
+@onready
+var reset_button : Button = $VBoxContainer/Reset
+@onready
+var end_button : Button = $VBoxContainer/End
 
 var possible_results = [
 	"nerd", "depressed", "thirst_trap", "furry", "tax_fraud", "smooth_criminal"
@@ -21,19 +25,19 @@ var result_stats = {
 	},
 	
 	"depressed" : {
-	StatsManager.stats.boredom : 100.0,
-	StatsManager.stats.thirst : 100.0,
-	StatsManager.stats.anger : 30.0,
-	StatsManager.stats.money : 50.0,
+	StatsManager.stats.boredom : 60.0,
+	StatsManager.stats.thirst : 80.0,
+	StatsManager.stats.anger : 50.0,
+	StatsManager.stats.money : 00.0,
 	StatsManager.stats.crime : 00.0
 	},
 	
 	"thirst_trap": {
-	StatsManager.stats.boredom : 50.0,
+	StatsManager.stats.boredom : 60.0,
 	StatsManager.stats.thirst : 100.0,
-	StatsManager.stats.anger : 50.0,
-	StatsManager.stats.money : 0.0,
-	StatsManager.stats.crime : 00.0,
+	StatsManager.stats.anger : 30.0,
+	StatsManager.stats.money : 15.0,
+	StatsManager.stats.crime : 10.0,
 	},
 	
 	"furry": {
@@ -71,21 +75,26 @@ var result_texts = {
 }
 
 signal end_game
+signal reset_game
 
 var visible_after_item_uses = 5
 var current_item_uses = 0
 
 func _ready():
-	self.visible = false
-	StatsManager.stat_change.connect(check_set_visible)
+	prepare()
+
+func prepare():
+	end_button.visible = false
 	guy_panel.size.y = 0.0
 	flavor_panel.size.y = 0.0
 	result_sprite.self_modulate = Color(1,1,1,0);
+	reset_button.visible = false
+	start_timer()
 
-func check_set_visible(_stat, _value):
-	current_item_uses += 1
-	if (current_item_uses >= visible_after_item_uses):
-		self.visible = true
+func start_timer():
+	var timer = get_tree().create_timer(5)
+	await timer.timeout
+	end_button.visible = true
 
 func calc_result():
 	var absolute_distance = 999
@@ -120,5 +129,14 @@ func _on_pressed():
 	tween.tween_property(result_sprite, "self_modulate", Color(1,1,1,1), 1.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
 	tween.tween_property(guy_panel, "size", Vector2(636, 55), 1.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BOUNCE)
 	tween.tween_property(flavor_panel, "size", Vector2(636, 136), 1.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BOUNCE)
+	
+	await get_tree().create_timer(5).timeout
+	reset_button.visible = true
+	
 
+
+func _on_reset_pressed():
+	emit_signal("reset_game")
+	StatsManager.reset()
+	prepare()
 	pass # Replace with function body.

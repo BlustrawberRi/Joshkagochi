@@ -1,0 +1,31 @@
+[gd_resource type="Theme" load_steps=6 format=3 uid="uid://bwby7d3nkgdmq"]
+
+[ext_resource type="StyleBox" uid="uid://bqfy416l4ge5i" path="res://resources/new_style_box_flat.tres" id="1_7ct1h"]
+[ext_resource type="StyleBox" uid="uid://dv4v4stfnqgex" path="res://resources/new_style_box_flat_up.tres" id="2_886mr"]
+
+[sub_resource type="SystemFont" id="SystemFont_7ct1h"]
+font_names = PackedStringArray("Bahnschrift")
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_886mr"]
+bg_color = Color(0.709804, 0.317647, 0.721569, 0.560784)
+border_width_left = 10
+border_width_top = 10
+border_width_right = 10
+border_width_bottom = 10
+border_color = Color(0.396078, 0.678431, 0.0431373, 1)
+border_blend = true
+
+[sub_resource type="SystemFont" id="SystemFont_2ekk1"]
+font_names = PackedStringArray("Bahnschrift")
+
+[resource]
+Button/colors/font_outline_color = Color(0, 0.233102, 0.19435, 1)
+Button/constants/outline_size = 3
+Button/fonts/font = SubResource("SystemFont_7ct1h")
+Button/styles/normal = SubResource("StyleBoxFlat_886mr")
+Panel/styles/panel = ExtResource("1_7ct1h")
+Panel/styles/up = ExtResource("2_886mr")
+RichTextLabel/colors/font_outline_color = Color(0.116533, 0.262177, 0.175131, 1)
+RichTextLabel/constants/outline_size = 4
+RichTextLabel/font_sizes/normal_font_size = 22
+RichTextLabel/fonts/normal_font = SubResource("SystemFont_2ekk1")

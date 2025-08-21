@@ -1,4 +1,4 @@
-[gd_scene load_steps=24 format=3 uid="uid://cewl6bledbexq"]
+[gd_scene load_steps=25 format=3 uid="uid://cewl6bledbexq"]
 
 [ext_resource type="PackedScene" uid="uid://dkflewpumsmbr" path="res://Scenes/boredom_remedy.tscn" id="1_dvldc"]
 [ext_resource type="Texture2D" uid="uid://h3hrdt4wybct" path="res://Images/tamagotchi_bg.png" id="1_pl56k"]
@@ -12,7 +12,7 @@
 [ext_resource type="PackedScene" uid="uid://de5dvjwm66mpk" path="res://Scenes/money_bar.tscn" id="5_spq87"]
 [ext_resource type="PackedScene" uid="uid://do8k5dqrgvc1d" path="res://Scenes/stat_timer.tscn" id="10_lc5mr"]
 [ext_resource type="Script" uid="uid://ctrf4jw5qvyv3" path="res://Scripts/end_game.gd" id="11_1sc7q"]
-[ext_resource type="StyleBox" uid="uid://bqfy416l4ge5i" path="res://resources/new_style_box_flat.tres" id="13_2l4pm"]
+[ext_resource type="Theme" uid="uid://bwby7d3nkgdmq" path="res://resources/theme.tres" id="12_pgaf4"]
 [ext_resource type="Texture2D" uid="uid://c63lvwoqtk2q8" path="res://Images/result_depressed.png" id="13_bi43j"]
 [ext_resource type="StyleBox" uid="uid://dv4v4stfnqgex" path="res://resources/new_style_box_flat_up.tres" id="14_aphlv"]
 [ext_resource type="Texture2D" uid="uid://df8tori5aeqk6" path="res://Images/result_furry.png" id="14_u4aci"]
@@ -20,6 +20,7 @@
 [ext_resource type="Texture2D" uid="uid://bbgsohfiugmc5" path="res://Images/result_smooth_criminal.png" id="16_pgaf4"]
 [ext_resource type="Texture2D" uid="uid://b8b1mpyk6w2t0" path="res://Images/result_tax_fraud.png" id="17_14vc2"]
 [ext_resource type="Texture2D" uid="uid://cst0d5ug2s0bf" path="res://Images/result_thirst_trap.png" id="18_bbjxi"]
+[ext_resource type="Texture2D" uid="uid://b602yxtkv0bil" path="res://Images/smoke_texture.png" id="21_14vc2"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pgaf4"]
 animations = [{
@@ -72,15 +73,13 @@ animations = [{
 "speed": 5.0
 }]
 
-[sub_resource type="SystemFont" id="SystemFont_2ekk1"]
-font_names = PackedStringArray("Bahnschrift")
+[sub_resource type="Gradient" id="Gradient_2ekk1"]
+offsets = PackedFloat32Array(0, 0.262222, 0.742222, 1)
+colors = PackedColorArray(1, 1, 1, 0, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 0)
 
-[sub_resource type="Theme" id="Theme_bi43j"]
-Panel/styles/panel = ExtResource("13_2l4pm")
-Panel/styles/up = ExtResource("14_aphlv")
-RichTextLabel/constants/outline_size = 4
-RichTextLabel/font_sizes/normal_font_size = 22
-RichTextLabel/fonts/normal_font = SubResource("SystemFont_2ekk1")
+[sub_resource type="Gradient" id="Gradient_bi43j"]
+offsets = PackedFloat32Array(0, 0.524444, 1)
+colors = PackedColorArray(0.522857, 0.246115, 0.602008, 1, 0.582165, 0.595755, 0.614219, 1, 0.399367, 0.59888, 0.472495, 1)
 
 [node name="DebugRi" type="Node2D"]
 
@@ -190,15 +189,25 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+theme = ExtResource("12_pgaf4")
 script = ExtResource("11_1sc7q")
 
-[node name="Button" type="Button" parent="GameOver"]
+[node name="VBoxContainer" type="VBoxContainer" parent="GameOver"]
 layout_mode = 0
-offset_left = 43.0
-offset_top = 39.0
-offset_right = 135.0
-offset_bottom = 70.0
+offset_left = 59.0
+offset_top = 59.0
+offset_right = 234.0
+offset_bottom = 165.0
+theme_override_constants/separation = 32
+
+[node name="End" type="Button" parent="GameOver/VBoxContainer"]
+layout_mode = 2
 text = "END GAME"
+
+[node name="Reset" type="Button" parent="GameOver/VBoxContainer"]
+layout_mode = 2
+text = "TRY AGAIN
+"
 
 [node name="ResultSprite" type="AnimatedSprite2D" parent="GameOver"]
 position = Vector2(776, 482)
@@ -212,7 +221,7 @@ offset_top = 590.0
 offset_right = 1093.0
 offset_bottom = 726.0
 pivot_offset = Vector2(318, 68)
-theme = SubResource("Theme_bi43j")
+theme = ExtResource("12_pgaf4")
 
 [node name="RichTextLabel" type="RichTextLabel" parent="GameOver/Flavor"]
 layout_mode = 1
@@ -244,7 +253,7 @@ offset_bottom = 279.0
 grow_horizontal = 2
 grow_vertical = 2
 pivot_offset = Vector2(318, 27.5)
-theme = SubResource("Theme_bi43j")
+theme = ExtResource("12_pgaf4")
 theme_override_styles/panel = ExtResource("14_aphlv")
 metadata/_edit_use_anchors_ = true
 
@@ -263,5 +272,35 @@ bbcode_enabled = true
 text = "THIS IS WHAT TYPE OF GUY YOU GOT"
 horizontal_alignment = 1
 
-[connection signal="pressed" from="GameOver/Button" to="Worm" method="_on_game_over_pressed"]
-[connection signal="pressed" from="GameOver/Button" to="GameOver" method="_on_pressed"]
+[node name="CPUParticles2D" type="CPUParticles2D" parent="GameOver"]
+visible = false
+position = Vector2(773, 452)
+scale = Vector2(1.79, 1.79)
+amount = 100
+texture = ExtResource("21_14vc2")
+randomness = 0.5
+lifetime_randomness = 0.87
+emission_shape = 1
+emission_sphere_radius = 128.0
+direction = Vector2(1, 2)
+spread = 180.0
+gravity = Vector2(0, 258.62)
+angular_velocity_min = -38.92
+angular_velocity_max = 97.3
+orbit_velocity_min = 0.24
+orbit_velocity_max = 1.19
+linear_accel_min = -8.11
+linear_accel_max = 13.52
+radial_accel_min = 29.73
+radial_accel_max = 100.0
+tangential_accel_min = 25.68
+tangential_accel_max = 39.19
+angle_min = -184.9
+angle_max = 145.9
+color_ramp = SubResource("Gradient_2ekk1")
+color_initial_ramp = SubResource("Gradient_bi43j")
+
+[connection signal="pressed" from="GameOver/VBoxContainer/End" to="Worm" method="_on_game_over_pressed"]
+[connection signal="pressed" from="GameOver/VBoxContainer/End" to="GameOver" method="_on_pressed"]
+[connection signal="pressed" from="GameOver/VBoxContainer/Reset" to="Worm" method="_on_reset_pressed"]
+[connection signal="pressed" from="GameOver/VBoxContainer/Reset" to="GameOver" method="_on_reset_pressed"]
