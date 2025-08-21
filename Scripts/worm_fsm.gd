@@ -120,18 +120,11 @@ func _on_game_over_pressed():
 	tween.kill()
 	tween = get_tree().create_tween()
 	tween.tween_property(self, "position", origin, 1.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
+	tween.tween_property(body, "self_modulate", Color(1, 1, 1, 0), 1.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
+	tween.tween_property(face, "self_modulate", Color(1, 1, 1, 0), 1.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
 	await tween.tween_interval(1.0).finished
 	tween.kill()
-	reduce_worm()
 	
-	pass # Replace with function body.
-
-func reduce_worm():
-	tween = get_tree().create_tween()
-	tween.set_parallel(true)
-	tween.tween_property(self, "scale", Vector2.ZERO, 1.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
-	tween.kill()
-
 
 func _on_reset_pressed():
 	shape = Shape.chill
