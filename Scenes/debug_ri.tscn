@@ -248,7 +248,7 @@ text = "EVOLVE"
 
 [node name="Reset" type="Button" parent="GameOver/VBoxContainer"]
 layout_mode = 2
-text = "TRY AGAIN
+text = "PLAY AGAIN
 "
 
 [node name="ResultSprite" type="AnimatedSprite2D" parent="GameOver"]
@@ -348,6 +348,7 @@ volume_db = -17.429
 autoplay = true
 
 [node name="Enguyclopedia" type="Control" parent="."]
+visible = false
 layout_mode = 3
 anchors_preset = 15
 anchor_right = 1.0

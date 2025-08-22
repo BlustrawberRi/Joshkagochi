@@ -55,12 +55,12 @@ var result_stats = {
 }
 
 var result_texts = {
-	"Nerd": ["YOU MADE A [rainbow]Nerd[/rainbow]", "lol. lmao. *shoves u into a locker*"],
+	"Nerd": ["YOU MADE A [rainbow]NERD[/rainbow]", "lol. lmao. *shoves u into a locker* (lovingly)"],
 	"Depressed Baby": ["YOU GOT... oh- uh.. you got depressed :(", "Damn.... You good homie? Don't worry. Some days just suck. It takes work but don't worry. There's always another day."],
-	"Thirst Trap": ["Thirst trap", "You got no money and are too hot. We gonna make lemonade out of this somehow.."],
-	"Furry": ["YOU MADE A [rainbow]FURRY[/rainbow]", "owo what's this? *baps u* :3"],
+	"Thirst Trap": ["THIRST TRAP", "You got no money and are too hot. We gonna make lemonade out of this somehow.."],
+	"Furry": ["YOU MADE A [rainbow]FURRY[/rainbow]", "owo what's this? *baps u* :3 \nYou grew into one of the most important members of society. Good job! :D"],
 	"Tax Evader": ["THE IRS IS KNOCKING", "You made so much money. there's no way you made this much and not get depressed. the only possible way to make this much money.... is TAX FRAUD!!!"],
-	"Smooth Criminal": ["YOU'VE BEEN HIT BY- YOU'VE BEEN STRUCK BY-", " A [rainbow]SMOOTH CRIMINAL[/rainbow]. All that playing around with knives has been paying off."],
+	"Smooth Criminal": ["YOU'VE BEEN HIT BY- YOU'VE BEEN STRUCK BY-", "A [rainbow]SMOOTH CRIMINAL[/rainbow]. All that playing around with knives has been paying off."],
 }
 
 
