@@ -118,6 +118,7 @@ RichTextLabel/font_sizes/normal_font_size = 22
 RichTextLabel/fonts/normal_font = SubResource("SystemFont_2ekk1")
 
 [node name="DebugRi" type="Node2D"]
+metadata/_edit_vertical_guides_ = [47.0]
 
 [node name="TamagotchiBg" type="Sprite2D" parent="."]
 position = Vector2(800, 450)
@@ -230,15 +231,15 @@ script = ExtResource("11_1sc7q")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="GameOver"]
 layout_mode = 0
-offset_left = 59.0
-offset_top = 59.0
-offset_right = 234.0
-offset_bottom = 165.0
+offset_left = 49.0
+offset_top = 731.0
+offset_right = 224.0
+offset_bottom = 837.0
 theme_override_constants/separation = 32
 
 [node name="End" type="Button" parent="GameOver/VBoxContainer"]
 layout_mode = 2
-text = "END GAME"
+text = "EVOLVE"
 
 [node name="Reset" type="Button" parent="GameOver/VBoxContainer"]
 layout_mode = 2
@@ -398,10 +399,10 @@ offset_bottom = 848.0
 
 [node name="Button" type="Button" parent="Enguyclopedia"]
 layout_mode = 0
-offset_left = 58.0
-offset_top = 815.0
-offset_right = 182.0
-offset_bottom = 852.0
+offset_left = 48.0
+offset_top = 65.0
+offset_right = 172.0
+offset_bottom = 102.0
 text = "Enguyclopedia"
 
 [connection signal="pressed" from="GameOver/VBoxContainer/End" to="Worm" method="_on_game_over_pressed"]
