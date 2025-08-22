@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://dgejybltxyhui"]
 
-[ext_resource type="Theme" uid="uid://bwby7d3nkgdmq" path="res://resources/theme.tres" id="1_2qgk2"]
+[ext_resource type="Theme" uid="uid://dceca5cw0hp12" path="res://resources/theme.tres" id="1_2qgk2"]
 [ext_resource type="Script" uid="uid://f38h0lhr7ofb" path="res://Scripts/result_entry.gd" id="2_o6j3j"]
 
 [node name="ResultEntry" type="VBoxContainer"]

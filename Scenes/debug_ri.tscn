@@ -25,14 +25,14 @@
 [ext_resource type="Texture2D" uid="uid://cst0d5ug2s0bf" path="res://Images/result_thirst_trap.png" id="18_bbjxi"]
 [ext_resource type="Texture2D" uid="uid://b602yxtkv0bil" path="res://Images/smoke_texture.png" id="21_14vc2"]
 [ext_resource type="AudioStream" uid="uid://vy0j8xengn63" path="res://sounds/ねこワークショップ.mp3" id="22_bbjxi"]
-[ext_resource type="Script" path="res://Scripts/enguyclopedia.gd" id="23_qmqi8"]
-[ext_resource type="PackedScene" path="res://Scenes/result_entry_depressed.tscn" id="24_2awfh"]
-[ext_resource type="PackedScene" path="res://Scenes/result_entry_furry.tscn" id="25_qmqi8"]
-[ext_resource type="PackedScene" path="res://Scenes/result_entry_nerd.tscn" id="26_bc0do"]
-[ext_resource type="PackedScene" path="res://Scenes/result_entry_smooth_criminal.tscn" id="27_aa3v1"]
-[ext_resource type="PackedScene" path="res://Scenes/result_entry_tax_evader.tscn" id="28_agea2"]
-[ext_resource type="PackedScene" path="res://Scenes/result_entry_thirst_trap.tscn" id="29_uv8vd"]
-[ext_resource type="Script" uid="uid://bsp5s7x38yvpu" path="res://Scenes/sfx_player.gd" id="31_bc0do"]
+[ext_resource type="Script" uid="uid://c8t1al7b34e4d" path="res://Scripts/enguyclopedia.gd" id="23_qmqi8"]
+[ext_resource type="PackedScene" uid="uid://dimbshn83p5ga" path="res://Scenes/result_entry_depressed.tscn" id="24_2awfh"]
+[ext_resource type="PackedScene" uid="uid://d3rg7at4khy04" path="res://Scenes/result_entry_furry.tscn" id="25_qmqi8"]
+[ext_resource type="PackedScene" uid="uid://dk3tq63ct4eyc" path="res://Scenes/result_entry_nerd.tscn" id="26_bc0do"]
+[ext_resource type="PackedScene" uid="uid://faa7t2bj8lr8" path="res://Scenes/result_entry_smooth_criminal.tscn" id="27_aa3v1"]
+[ext_resource type="PackedScene" uid="uid://bxshved3v5uq0" path="res://Scenes/result_entry_tax_evader.tscn" id="28_agea2"]
+[ext_resource type="PackedScene" uid="uid://c6lntkblbil36" path="res://Scenes/result_entry_thirst_trap.tscn" id="29_uv8vd"]
+[ext_resource type="Script" path="res://Scenes/sfx_player.gd" id="31_bc0do"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pgaf4"]
 animations = [{
@@ -368,7 +368,7 @@ layout_mode = 0
 offset_left = 27.0
 offset_top = 110.0
 offset_right = 1569.0
-offset_bottom = 724.0
+offset_bottom = 761.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Enguyclopedia/Panel/ScrollContainer"]
 layout_mode = 2
