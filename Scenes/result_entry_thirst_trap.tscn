@@ -11,3 +11,8 @@ texture = ExtResource("2_sgqmj")
 
 [node name="Name" parent="." index="1"]
 text = "Thirst Trap"
+
+[node name="Description" parent="." index="2"]
+text = "\"You got no money and are too hot. We gonna make lemonade out of this somehow..\""
+fit_content = true
+horizontal_alignment = 1

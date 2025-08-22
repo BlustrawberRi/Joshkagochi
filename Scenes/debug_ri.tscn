@@ -358,7 +358,6 @@ theme = ExtResource("12_pgaf4")
 script = ExtResource("23_qmqi8")
 
 [node name="Panel" type="Panel" parent="Enguyclopedia"]
-visible = false
 layout_mode = 0
 offset_right = 1599.0
 offset_bottom = 894.0
@@ -369,12 +368,11 @@ layout_mode = 0
 offset_left = 27.0
 offset_top = 110.0
 offset_right = 1569.0
-offset_bottom = 705.0
+offset_bottom = 724.0
 
 [node name="HBoxContainer" type="HBoxContainer" parent="Enguyclopedia/Panel/ScrollContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
-size_flags_vertical = 3
 
 [node name="ResultEntry" parent="Enguyclopedia/Panel/ScrollContainer/HBoxContainer" instance=ExtResource("24_2awfh")]
 layout_mode = 2

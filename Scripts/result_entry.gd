@@ -4,18 +4,21 @@ extends VBoxContainer
 var guy: String
 
 @onready
-var label = $Name
-
+var name_label = $Name
+@onready
+var desc_label = $Description
 @onready
 var texture = $Result
 
 func _ready():
-	label.text = "???????"
+	name_label.text = "???????"
+	desc_label.text = ""
 	texture.modulate = Color.BLACK
 
 func reveal():
-	label.text = guy
+	name_label.text = guy
 	texture.modulate = Color.WHITE
+	desc_label.text = ResultCalculator.result_texts.get(guy)[1]
 
 
 func _on_end_pressed():
