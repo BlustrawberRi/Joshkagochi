@@ -1,5 +1,10 @@
 extends Control
 
+@export 
+var result_sound : AudioStream
+@export 
+var result_depressed_sound : AudioStream
+
 @onready 
 var flavor_panel = $Flavor
 @onready
@@ -11,7 +16,7 @@ var reset_button : Button = $VBoxContainer/Reset
 @onready
 var end_button : Button = $VBoxContainer/End
 
-
+signal result_playing(sound:AudioStream)
 signal reset_game
 
 var visible_after_item_uses = 5
@@ -38,12 +43,20 @@ func _on_pressed():
 	var result = ResultCalculator.calc_result()
 	var result_text = ResultCalculator.result_texts.get(result)
 
+
+	print_rich("[rainbow]"+result+"[/rainbow]")
+	if result == "Depressed Baby":
+		result_playing.emit(result_depressed_sound)
+	else: 
+		result_playing.emit(result_sound)
+
 	result_sprite.play(result)
 	guy_panel.get_child(0).text = result_text[0]
 	flavor_panel.get_child(0).text = result_text[1]
 	var tween = get_tree().create_tween()
 	await tween.tween_interval(2.0)
 	
+
 	tween.tween_property(result_sprite, "self_modulate", Color(1,1,1,1), 1.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
 	tween.tween_property(guy_panel, "size", Vector2(636, 55), 1.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BOUNCE)
 	tween.tween_property(flavor_panel, "size", Vector2(636, 136), 1.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BOUNCE)

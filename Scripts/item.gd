@@ -2,6 +2,7 @@ extends Control
 class_name Item
 
 @export var influences: Dictionary [StatsManager.stats, int]
+@export var sound: AudioStream
 
 var _is_pressed : bool
 var _mouse_pos_offset : Vector2

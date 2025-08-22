@@ -10,6 +10,8 @@ enum Shape{chill, active}
 @onready var body: Sprite2D = $CollisionShape2D/Body
 @onready var animation : AnimationPlayer = $AnimationPlayer
 
+signal item_collided (item:Item)
+
 var is_idling: bool
 var tween: Tween
 
@@ -86,13 +88,12 @@ func _on_area_entered(area):
 
 	shape = Shape.active
 	update_shape()
-	# todo: start remedy periodical update
+	item_collided.emit(item)
 
 
 func _on_area_exited(_area):
 	shape = Shape.chill
 	update_shape()
-	#	todo: stop remedies
 
 func idle(): 
 	is_idling = true

@@ -1,4 +1,4 @@
-[gd_scene load_steps=38 format=3 uid="uid://cewl6bledbexq"]
+[gd_scene load_steps=41 format=3 uid="uid://cewl6bledbexq"]
 
 [ext_resource type="PackedScene" uid="uid://dkflewpumsmbr" path="res://Scenes/boredom_remedy.tscn" id="1_dvldc"]
 [ext_resource type="Texture2D" uid="uid://h3hrdt4wybct" path="res://Images/tamagotchi_bg.png" id="1_pl56k"]
@@ -12,24 +12,27 @@
 [ext_resource type="PackedScene" uid="uid://de5dvjwm66mpk" path="res://Scenes/money_bar.tscn" id="5_spq87"]
 [ext_resource type="PackedScene" uid="uid://do8k5dqrgvc1d" path="res://Scenes/stat_timer.tscn" id="10_lc5mr"]
 [ext_resource type="Script" uid="uid://ctrf4jw5qvyv3" path="res://Scripts/end_game.gd" id="11_1sc7q"]
-[ext_resource type="Theme" uid="uid://bwby7d3nkgdmq" path="res://resources/theme.tres" id="12_pgaf4"]
+[ext_resource type="Theme" uid="uid://dceca5cw0hp12" path="res://resources/theme.tres" id="12_pgaf4"]
 [ext_resource type="StyleBox" uid="uid://bqfy416l4ge5i" path="res://resources/new_style_box_flat.tres" id="13_2l4pm"]
 [ext_resource type="Texture2D" uid="uid://c63lvwoqtk2q8" path="res://Images/result_depressed.png" id="13_bi43j"]
+[ext_resource type="AudioStream" uid="uid://dvvpehe4jtg78" path="res://sounds/2025-08_joshkagotchi_result.mp3" id="14_agea2"]
 [ext_resource type="StyleBox" uid="uid://dv4v4stfnqgex" path="res://resources/new_style_box_flat_up.tres" id="14_aphlv"]
 [ext_resource type="Texture2D" uid="uid://df8tori5aeqk6" path="res://Images/result_furry.png" id="14_u4aci"]
 [ext_resource type="Texture2D" uid="uid://sy8ejdbxhugg" path="res://Images/result_nerd.png" id="15_m54ty"]
+[ext_resource type="AudioStream" uid="uid://beep37q50chhr" path="res://sounds/2025-08_joshkagotchi_result_depressed.mp3" id="15_uv8vd"]
 [ext_resource type="Texture2D" uid="uid://bbgsohfiugmc5" path="res://Images/result_smooth_criminal.png" id="16_pgaf4"]
 [ext_resource type="Texture2D" uid="uid://b8b1mpyk6w2t0" path="res://Images/result_tax_fraud.png" id="17_14vc2"]
 [ext_resource type="Texture2D" uid="uid://cst0d5ug2s0bf" path="res://Images/result_thirst_trap.png" id="18_bbjxi"]
 [ext_resource type="Texture2D" uid="uid://b602yxtkv0bil" path="res://Images/smoke_texture.png" id="21_14vc2"]
 [ext_resource type="AudioStream" uid="uid://vy0j8xengn63" path="res://sounds/ねこワークショップ.mp3" id="22_bbjxi"]
-[ext_resource type="Script" uid="uid://c8t1al7b34e4d" path="res://Scripts/enguyclopedia.gd" id="23_qmqi8"]
-[ext_resource type="PackedScene" uid="uid://dimbshn83p5ga" path="res://Scenes/result_entry_depressed.tscn" id="24_2awfh"]
-[ext_resource type="PackedScene" uid="uid://d3rg7at4khy04" path="res://Scenes/result_entry_furry.tscn" id="25_qmqi8"]
-[ext_resource type="PackedScene" uid="uid://dk3tq63ct4eyc" path="res://Scenes/result_entry_nerd.tscn" id="26_bc0do"]
-[ext_resource type="PackedScene" uid="uid://faa7t2bj8lr8" path="res://Scenes/result_entry_smooth_criminal.tscn" id="27_aa3v1"]
-[ext_resource type="PackedScene" uid="uid://bxshved3v5uq0" path="res://Scenes/result_entry_tax_evader.tscn" id="28_agea2"]
-[ext_resource type="PackedScene" uid="uid://c6lntkblbil36" path="res://Scenes/result_entry_thirst_trap.tscn" id="29_uv8vd"]
+[ext_resource type="Script" path="res://Scripts/enguyclopedia.gd" id="23_qmqi8"]
+[ext_resource type="PackedScene" path="res://Scenes/result_entry_depressed.tscn" id="24_2awfh"]
+[ext_resource type="PackedScene" path="res://Scenes/result_entry_furry.tscn" id="25_qmqi8"]
+[ext_resource type="PackedScene" path="res://Scenes/result_entry_nerd.tscn" id="26_bc0do"]
+[ext_resource type="PackedScene" path="res://Scenes/result_entry_smooth_criminal.tscn" id="27_aa3v1"]
+[ext_resource type="PackedScene" path="res://Scenes/result_entry_tax_evader.tscn" id="28_agea2"]
+[ext_resource type="PackedScene" path="res://Scenes/result_entry_thirst_trap.tscn" id="29_uv8vd"]
+[ext_resource type="Script" uid="uid://bsp5s7x38yvpu" path="res://Scenes/sfx_player.gd" id="31_bc0do"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_pgaf4"]
 animations = [{
@@ -228,6 +231,8 @@ grow_horizontal = 2
 grow_vertical = 2
 theme = ExtResource("12_pgaf4")
 script = ExtResource("11_1sc7q")
+result_sound = ExtResource("14_agea2")
+result_depressed_sound = ExtResource("15_uv8vd")
 
 [node name="VBoxContainer" type="VBoxContainer" parent="GameOver"]
 layout_mode = 0
@@ -339,7 +344,7 @@ color_initial_ramp = SubResource("Gradient_bi43j")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="."]
 stream = ExtResource("22_bbjxi")
-volume_db = -10.0
+volume_db = -17.429
 autoplay = true
 
 [node name="Enguyclopedia" type="Control" parent="."]
@@ -405,6 +410,11 @@ offset_right = 172.0
 offset_bottom = 102.0
 text = "Enguyclopedia"
 
+[node name="SFX" type="AudioStreamPlayer" parent="."]
+script = ExtResource("31_bc0do")
+
+[connection signal="item_collided" from="Worm" to="SFX" method="_on_item_collided"]
+[connection signal="result_playing" from="GameOver" to="SFX" method="play_sound"]
 [connection signal="pressed" from="GameOver/VBoxContainer/End" to="Worm" method="_on_game_over_pressed"]
 [connection signal="pressed" from="GameOver/VBoxContainer/End" to="GameOver" method="_on_pressed"]
 [connection signal="pressed" from="GameOver/VBoxContainer/End" to="Enguyclopedia/Panel/ScrollContainer/HBoxContainer/ResultEntry" method="_on_end_pressed"]
