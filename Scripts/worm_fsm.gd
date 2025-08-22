@@ -105,28 +105,33 @@ func idle():
 	target_x = clampi(target_x, 560, 991)
 	var target_y = position.y + randi_range(-50, 50) * 2
 	target_y = clampi(target_y, 356, 594)
-	if(target_x <= self.position.x):
-		body.flip_h = false
-		face.flip_h = false
-	else:
-		body.flip_h = true
-		face.flip_h = true
 	
 	var target_destination = Vector2(target_x, target_y)
+	face_walking_direction(target_x)
 	tween = get_tree().create_tween()
 	tween.tween_property(self, "position", target_destination, randf_range(0.8, 2.2)).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
 	await tween.tween_interval(randf_range(1.2, 2.3)).finished
 	tween.kill()
 	if (is_idling): idle()
 
+func face_walking_direction(target_x: float):
+	if(target_x <= self.position.x):
+		body.flip_h = false
+		face.flip_h = false
+	else:
+		body.flip_h = true
+		face.flip_h = true
 
 func _on_game_over_pressed():
 	is_game_over = true
 	is_idling = false
+	face_walking_direction(origin.x)
 	tween.kill()
 	tween = get_tree().create_tween()
 	tween.tween_property(self, "position", origin, 1.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_SINE)
-	tween.tween_property(body, "self_modulate", Color(1, 1, 1, 0), 1.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
+	await tween.tween_interval(0.75)
+	tween.set_parallel(true)
+	tween.chain().tween_property(body, "self_modulate", Color(1, 1, 1, 0), 1.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
 	tween.tween_property(face, "self_modulate", Color(1, 1, 1, 0), 1.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
 	await tween.tween_interval(1.0).finished
 	tween.kill()

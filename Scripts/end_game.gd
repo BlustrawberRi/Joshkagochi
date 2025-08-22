@@ -42,7 +42,7 @@ func _on_pressed():
 	guy_panel.get_child(0).text = result_text[0]
 	flavor_panel.get_child(0).text = result_text[1]
 	var tween = get_tree().create_tween()
-	await tween.tween_interval(1.0)
+	await tween.tween_interval(2.0)
 	
 	tween.tween_property(result_sprite, "self_modulate", Color(1,1,1,1), 1.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_QUINT)
 	tween.tween_property(guy_panel, "size", Vector2(636, 55), 1.0).set_ease(Tween.EASE_OUT).set_trans(Tween.TRANS_BOUNCE)
